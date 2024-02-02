@@ -15,6 +15,11 @@ export interface IFileAbstraction {
     name: string;
 
     /**
+     * Total size of file
+     */
+    size: number;
+
+    /**
      * Readable, seekable stream for the file referenced by the current instance.
      * @remarks
      *     This property is typically used when constructing an instance of {@link File}.
@@ -65,6 +70,11 @@ export class LocalFileAbstraction implements IFileAbstraction {
     /** @inheritDoc */
     public get name(): string {
         return this._name;
+    }
+
+    /** @inheritDoc */
+    public get size(): number {
+        return Stream.getFileSize(this._name)
     }
 
     /** @inheritDoc */

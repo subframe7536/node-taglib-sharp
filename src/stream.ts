@@ -115,6 +115,10 @@ export class Stream implements IStream {
         return new Stream(fd, true);
     }
 
+    public static getFileSize(path: string): number {
+        return fs.statSync(path).size
+    }
+
     // #endregion
 
     // #region Properties

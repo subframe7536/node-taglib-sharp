@@ -5,7 +5,9 @@ export {CorruptFileError, NotImplementedError} from "./errors";
 export {File, FileAccessMode, FileTypeConstructor, FileTypeResolver, ReadStyle} from "./file";
 export {IDisposable, ILazy} from "./interfaces";
 export {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
+export {MemoryFileAbstraction} from "./memory/memoryFileAbstraction"
 export {IStream, SeekOrigin} from "./stream";
+export {MemoryStream} from "./memory/memoryStream"
 export {default as UuidWrapper} from "./uuidWrapper";
 
 // Base Tag Classes

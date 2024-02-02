@@ -52,6 +52,7 @@ const getTestTagFooter = (flags: ApeTagFooterFlags, itemCount: number, itemPlusF
     @test
     public fromData_dataTooShort() {
         // Arrange
+        // @ts-ignore
         const data = getTestTagFooter(0, 0, 100);
 
         // Act / Assert
@@ -82,6 +83,7 @@ const getTestTagFooter = (flags: ApeTagFooterFlags, itemCount: number, itemPlusF
         const data = ByteVector.concatenate(
             item1,
             item2,
+            // @ts-ignore
             getTestTagFooter(0, 3, item1.length + item2.length + ApeTagFooter.SIZE)
         );
 
@@ -169,6 +171,7 @@ const getTestTagFooter = (flags: ApeTagFooterFlags, itemCount: number, itemPlusF
             ByteVector.fromSize(10),
             item1,
             item2,
+            // @ts-ignore
             getTestTagFooter(0, 3, item1.length + item2.length + ApeTagFooter.SIZE)
         );
         const footerPosition = item1.length + item2.length + 10;

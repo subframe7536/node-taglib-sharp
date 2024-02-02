@@ -4,6 +4,7 @@ import {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
 import {ILazy} from "./interfaces";
 import {FileUtils, Guards} from "./utils";
 import {SeekOrigin} from "./stream";
+import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 
 /**
  * The type of content appearing in an {@link IPicture} instance.
@@ -259,6 +260,17 @@ export class Picture implements IPicture {
         picture.type = picture.mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
         return picture;
 
+    }
+
+    /**
+     * Constructs and initializes a new instance from a buffer. The type
+     * and description of the picture are determined by the extension of the file. The file is
+     * loaded completely.
+     * @param fileName File name to the file to use for the file
+     * @param buffer File buffer
+     */
+    public static fromBuffer(fileName: string, buffer: Uint8Array | Buffer | number[]): Picture {
+        return Picture.fromFileAbstraction(new MemoryFileAbstraction(fileName, buffer))
     }
 
     /**
@@ -523,6 +535,24 @@ export class PictureLazy implements IPicture, ILazy {
         const picture = new PictureLazy();
         picture._file = new LocalFileAbstraction(filePath);
         picture._filename = path.basename(filePath);
+        picture._description = picture._filename;
+        picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
+        picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
+
+        return picture;
+    }
+    
+    /**
+     * Constructs a new instance that will be lazily loaded from the filePath provided.
+     * @param fileName Path to the file to read
+     * @param buffer Buffer to read
+     */
+    public static fromBuffer(fileName: string, buffer: Buffer): PictureLazy {
+        Guards.truthy(fileName, "path");
+
+        const picture = new PictureLazy();
+        picture._file = new MemoryFileAbstraction(fileName, buffer);
+        picture._filename = path.basename(fileName);
         picture._description = picture._filename;
         picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
         picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;

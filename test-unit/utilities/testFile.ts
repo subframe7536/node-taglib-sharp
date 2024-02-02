@@ -57,6 +57,7 @@ export default {
     getFileAbstraction: (data: ByteVector): TestFileAbstraction => {
         return {
             name: TestConstants.name,
+            size: 0,
             get allBytes(): ByteVector { return data; },
             get readStream(): IStream { return new TestStream(data, false); },
             get writeStream(): IStream { return new TestStream(data, true); },

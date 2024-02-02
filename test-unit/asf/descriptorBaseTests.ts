@@ -18,6 +18,7 @@ class TestDescriptor extends DescriptorBase {
     @test
     public invalidDataType() {
         // Act / Assert
+        // @ts-ignore
         assert.throws(() => new TestDescriptor("foo", 8888, "bar"));
     }
 

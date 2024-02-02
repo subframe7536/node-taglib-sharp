@@ -1,6 +1,7 @@
 import {ByteVector} from "./byteVector";
 import {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
 import {IDisposable} from "./interfaces";
+import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 import {Properties} from "./properties";
 import {IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
@@ -140,6 +141,26 @@ export abstract class File implements IDisposable {
         propertiesStyle: ReadStyle = ReadStyle.Average
     ): File {
         return File.createInternal(new LocalFileAbstraction(filePath), mimeType, propertiesStyle);
+    }
+
+    /**
+     * Creates a new instance of {@link File} subclass for a buffer, MimeType, and
+     * property read style.
+     * @param fileName Name to the buffer to read/write.
+     * @param buffer Buffer that to read/write
+     * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
+     *     return. If omitted, the MimeType will be guessed based on the file's extension.
+     * @param propertiesStyle Optional, level of detail to use when reading the media information
+     *     from the new instance. If omitted {@link ReadStyle.Average} is used.
+     * @returns New instance of {@link File} as read from the specified path.
+     */
+    public static createFromBuffer(
+        fileName: string,
+        buffer: Uint8Array | Buffer | number[],
+        mimeType?: string,
+        propertiesStyle: ReadStyle = ReadStyle.Average
+    ): File {
+        return File.createInternal(new MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
     }
 
     private static createInternal(abstraction: IFileAbstraction, mimeType: string, propertiesStyle: ReadStyle): File {

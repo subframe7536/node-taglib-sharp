@@ -192,6 +192,7 @@ const _sampleData = ByteVector.concatenate(
     public renderFooter_headerNotPresent() {
         // Arrange
         const footer = ApeTagFooter.fromData(_sampleData);
+        // @ts-ignore
         footer.flags = 0;
 
         // Act
@@ -255,6 +256,7 @@ const _sampleData = ByteVector.concatenate(
     public renderHeader_headerNotPresent() {
         // Arrange
         const footer = ApeTagFooter.fromData(_sampleData);
+        // @ts-ignore
         footer.flags = 0;
 
         // Act

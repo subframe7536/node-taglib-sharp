@@ -37,6 +37,7 @@ export class ApeTagFooter {
      */
     public static readonly SIZE = 32;
 
+    // @ts-ignore
     private _flags: ApeTagFooterFlags = 0;
     private _itemCount: number = 0;
     private _itemSize: number = 0;

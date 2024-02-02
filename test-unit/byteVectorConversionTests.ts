@@ -818,8 +818,11 @@ const assert = Chai.assert;
     @test
     public toString_invalidOffset() {
         // Arrange, Act, Assert
+        // @ts-ignore
         assert.throws(() => { ByteVector.fromSize(0).toString(0.1); });
+        // @ts-ignore
         assert.throws(() => { ByteVector.fromSize(0).toString(-1); });
+        // @ts-ignore
         assert.throws(() => { ByteVector.fromSize(0).toString(1234); });
     }
 
@@ -884,6 +887,7 @@ const assert = Chai.assert;
     public toString_utf16Full() {
         // This test will change the last used utf16 encoding, so we'll restore it afterward
         const originalLastEncoding = Encoding["_lastUtf16Encoding"];
+        // @ts-ignore
         Encoding["_lastUtf16Encoding"] = 123;
 
         try {
