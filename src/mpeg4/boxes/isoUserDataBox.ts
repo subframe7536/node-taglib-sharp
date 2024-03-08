@@ -44,7 +44,7 @@ export default class IsoUserDataBox extends Mpeg4Box {
      * Gets the box headers for the current "udta" box and all parent boxes up to the top of the file.
      * @remarks Changes to the returned object will not be honored. Set the property to change it.
      */
-    public get parentTree(): Mpeg4BoxHeader[] { return this._parentTree.slice(); }
+    public get parentTree(): Mpeg4BoxHeader[] { return this._parentTree?.slice(); }
     /**
      * Sets the box headers for the current "udta" box and all parent boxes up to the top of the file.
      * @internal

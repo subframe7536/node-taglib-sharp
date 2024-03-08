@@ -54,7 +54,7 @@ export default class IsoHandlerBox extends FullBox {
      * @param handlerType A {@link ByteVector} object specifying a 4 byte handler type.
      * @param name An object specifying the handler name.
      */
-    public static fromHandlerTypeAndHandlerName(handlerType: ByteVector, name: string): IsoHandlerBox {
+    public static fromHandlerTypeAndHandlerName(handlerType: ByteVector, name: string = ""): IsoHandlerBox {
         Guards.truthy(handlerType, "handlerType");
         if (handlerType.length < 4) {
             throw new Error("The handler type must be four bytes long.");
