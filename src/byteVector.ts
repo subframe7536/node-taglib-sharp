@@ -1,8 +1,9 @@
-import * as IConv from "iconv-lite";
+import IConv from "iconv-lite";
 import * as fs from "fs";
 import {IFileAbstraction} from "./fileAbstraction";
 import {IStream} from "./stream";
-import {Guards, NumberUtils} from "./utils";
+import {NumberUtils} from "./utils";
+import {Guards} from "./guards"
 
 /**
  * @summary Specifies the text encoding used when converting betweenInclusive a string and a
