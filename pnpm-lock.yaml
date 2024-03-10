@@ -4,10 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  iconv-lite@0.6.3:
+    hash: r7au5dvp63hb57aweuxwmd44jm
+    path: patches/iconv-lite@0.6.3.patch
+
 dependencies:
   iconv-lite:
     specifier: ^0.6.3
-    version: 0.6.3
+    version: 0.6.3(patch_hash=r7au5dvp63hb57aweuxwmd44jm)
   os-locale:
     specifier: ^4.0.0
     version: 4.0.0
@@ -2237,12 +2242,13 @@ packages:
       sshpk: 1.18.0
     dev: true
 
-  /iconv-lite@0.6.3:
+  /iconv-lite@0.6.3(patch_hash=r7au5dvp63hb57aweuxwmd44jm):
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
     dev: false
+    patched: true
 
   /ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}

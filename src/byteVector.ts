@@ -115,7 +115,8 @@ export class Encoding {
         // @TODO: The next version of iconv-lite will add Uint8Array to the types for decode. Until
         //    then, I have word it should work w/an 'unsafe' cast. See
         //    https://github.com/ashtuchkin/iconv-lite/issues/293
-        return IConv.decode(<Buffer> data, this._encoding);
+        // PATCHED
+        return IConv.decode(data, this._encoding);
     }
 
     public encode(text: string): Uint8Array {
