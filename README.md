@@ -1,9 +1,11 @@
+
 # TagLib# for Node
 
-| Master                                                                                                                                                                           | Develop                                                                                                                                                                            | Latest                                                                                                                                                      |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [![Build Status](https://ci.appveyor.com/api/projects/status/7hdfrbc4ecvvruwv/branch/master?svg=true)](https://ci.appveyor.com/project/benrr101/node-taglib-sharp/branch/master) | [![Build Status](https://ci.appveyor.com/api/projects/status/7hdfrbc4ecvvruwv/branch/develop?svg=true)](https://ci.appveyor.com/project/benrr101/node-taglib-sharp/branch/develop) | [![Build Status](https://ci.appveyor.com/api/projects/status/7hdfrbc4ecvvruwv?svg=true)](https://ci.appveyor.com/project/benrr101/node-taglib-sharp)        |
-| [![Coverage Status](https://coveralls.io/repos/github/benrr101/node-taglib-sharp/badge.svg?branch=master)](https://coveralls.io/github/benrr101/node-taglib-sharp?branch=master) | [![Coverage Status](https://coveralls.io/repos/github/benrr101/node-taglib-sharp/badge.svg?branch=develop)](https://coveralls.io/github/benrr101/node-taglib-sharp?branch=develop) | [![Coverage Status](https://coveralls.io/repos/github/benrr101/node-taglib-sharp/badge.svg?latest)](https://coveralls.io/github/benrr101/node-taglib-sharp) |
+## Fork version, optimized for web
+
+Asyncly load file parser. Support read from buffer.
+
+For normal usage, you should use [`node-taglib-sharp-extend`](https://github.com/subframe7536/node-taglib-sharp-extend) instead.
 
 ## Description
 TagLib# is a .NET library that has been around for years. It provides a unified interface for
