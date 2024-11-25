@@ -17,7 +17,7 @@ export {getMimeType, getExtension} from './utils/path'
 // Base Tag Classes
 export {default as CombinedTag} from "./combinedTag";
 export {default as Genres} from "./genres";
-export {IPicture, Picture, PictureLazy, PictureType, createLazyPicturefromBuffer, createLazyPicturefromPath, createPicturefromBuffer, createPicturefromPath} from "./picture";
+export {Picture, PictureLazy, PictureType, createLazyPicturefromBuffer, createLazyPicturefromPath, createPicturefromBuffer, createPicturefromPath} from "./picture";
 export type {IPicture} from "./picture";
 export {MediaTypes, Properties} from "./properties";
 export type {ICodec, IAudioCodec, ILosslessAudioCodec, IVideoCodec, IPhotoCodec} from "./properties";
