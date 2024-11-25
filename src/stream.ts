@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-import {Guards} from "./utils";
+import * as Guards from "./utils/guards";
 import {ByteVector} from "./byteVector";
 
 /**

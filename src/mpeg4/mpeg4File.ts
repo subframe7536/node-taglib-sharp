@@ -9,7 +9,7 @@ import { File, FileAccessMode, ReadStyle } from "../file";
 import { IFileAbstraction } from "../fileAbstraction";
 import { Properties } from "../properties";
 import { Tag, TagTypes } from "../tag";
-import { NumberUtils } from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Provides tagging and properties support for Mpeg4 files.

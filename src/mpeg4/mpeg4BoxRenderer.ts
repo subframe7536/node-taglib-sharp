@@ -2,7 +2,7 @@ import IsoFreeSpaceBox from "./boxes/isoFreeSpaceBox";
 import Mpeg4Box from "./boxes/mpeg4Box";
 import Mpeg4BoxType from "./mpeg4BoxType";
 import {ByteVector} from "../byteVector";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Renderer for {@link Mpeg4Box} objects.

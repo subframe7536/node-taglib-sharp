@@ -5,7 +5,10 @@ import {CorruptFileError} from "../errors";
 import {File, FileAccessMode} from "../file";
 import {IPicture, Picture, PictureType} from "../picture";
 import {Tag, TagTypes} from "../tag";
-import {DateUtils, Guards, NumberUtils, StringComparison} from "../utils";
+import * as DateUtils from "../utils/date";
+import * as NumberUtils from '../utils/number';
+import * as StringComparison from '../utils/string';
+import * as Guards from "../utils/guards";
 
 /**
  * Provides a representation of an APEv2 tag which can be read from and written to disk.

@@ -3,7 +3,7 @@ import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {File, FileAccessMode} from "../file";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Extends {@link Tag} to provide support for reading and writing tags stored in the ID3v1.1 format.

@@ -2,7 +2,8 @@ import Mpeg4AudioTypes from "../mpeg4/mpeg4AudioTypes";
 import {ByteVector} from "../byteVector";
 import {File} from "../file";
 import {IAudioCodec, MediaTypes} from "../properties";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * This structure implements {@link IAudioCodec} and provides information about an ADTS AAC audio

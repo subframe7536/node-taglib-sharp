@@ -4,7 +4,9 @@ import {ByteVector, StringType} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifier, FrameIdentifiers} from "../frameIdentifiers";
-import {Guards, StringComparison, StringUtils} from "../../utils";
+import * as StringUtils from "../../utils/string"
+import * as StringComparison from '../../utils/string';
+import * as Guards from "../../utils/guards";
 
 /**
  * This class provides support for ID3v2 text information frames (section 4.2) covering `T000` to

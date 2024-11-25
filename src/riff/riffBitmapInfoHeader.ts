@@ -1,7 +1,8 @@
 import {ByteVector} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {IVideoCodec, MediaTypes} from "../properties";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * This class provides a representation of a Microsoft BitmapInfoHeader structure which provides

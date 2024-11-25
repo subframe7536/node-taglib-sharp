@@ -5,7 +5,7 @@ import {ByteVector} from "../../byteVector";
 import {Guids, ObjectType} from "../constants";
 import {CorruptFileError} from "../../errors";
 import {File} from "../../file";
-import {NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number";
 
 /**
  * Flags that are set on a {@link FilePropertiesObject}. See {@link FilePropertiesObject.flags} for

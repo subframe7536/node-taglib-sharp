@@ -3,7 +3,7 @@ import EbmlParserOptions from "./ebmlParserOptions";
 import {ByteVector, StringType} from "../byteVector";
 import {File, FileAccessMode} from "../file";
 import {ILazy} from "../interfaces";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * An element that allows accessing typed information from a parser at a later time than parsing.

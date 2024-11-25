@@ -3,7 +3,8 @@ import EbmlParser from "../ebml/ebmlParser";
 import {ByteVector} from "../byteVector";
 import {UnsupportedFormatError} from "../errors";
 import {MatroskaIds} from "./matroskaIds";
-import {Guards, StringUtils} from "../utils";
+import * as StringUtils from "../utils/string"
+import * as Guards from "../utils/guards";
 
 /**
  * Represents a value stored in a Matroska tag.
@@ -119,7 +120,7 @@ export default class MatroskaTagValue {
     /**
      * Gets whether the current tag value is a string.
      */
-    public get isString(): boolean { return typeof(this._value) === "string"; }
+    public get isString(): boolean { return typeof this._value === "string"; }
 
     /**
      * Gets the language code that the tag value is stored in.

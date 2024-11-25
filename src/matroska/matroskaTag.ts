@@ -1,6 +1,6 @@
 import MatroskaTagValue from "./matroskaTagValue";
 import {MatroskaTagTarget} from "./matroskaTagTarget";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Abstraction on that represents the combination of a Matroska simple tag and a tag target.

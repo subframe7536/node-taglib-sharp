@@ -5,7 +5,8 @@ import {CorruptFileError} from "../errors";
 import {File} from "../file";
 import {IAudioCodec, MediaTypes} from "../properties";
 import {ChannelMode, MpegVersion} from "./mpegEnums";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Provides information about an MPEG audio stream. For more information and definition of the

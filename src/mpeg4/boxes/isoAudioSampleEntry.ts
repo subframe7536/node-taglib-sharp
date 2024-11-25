@@ -5,7 +5,7 @@ import Mpeg4BoxType from "../mpeg4BoxType";
 import {ByteVector, StringType} from "../../byteVector";
 import {File} from "../../file";
 import {IAudioCodec, MediaTypes} from "../../properties";
-import {NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number";
 
 /**
  * This class extends {@link IsoSampleEntry} and implements {@link IAudioCodec} to provide an implementation of a

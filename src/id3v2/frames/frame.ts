@@ -4,7 +4,8 @@ import {ByteVector, StringType} from "../../byteVector";
 import {CorruptFileError, NotImplementedError} from "../../errors";
 import {Id3v2FrameFlags, Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifier} from "../frameIdentifiers";
-import {Guards, NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number"
+import * as Guards from "../../utils/guards";
 
 /**
  * Enumeration of types of frames.

@@ -2,7 +2,8 @@ import {ByteVector, StringType} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifiers} from "../frameIdentifiers";
-import {Guards, NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number"
+import * as Guards from "../../utils/guards";
 
 /**
  * Type of channel data to get from or set to a {@link RelativeVolumeFrame} object

@@ -12,7 +12,7 @@ import {Guids, ObjectType} from "../../src/asf/constants";
 import {File} from "../../src/file";
 import {MediaTypes} from "../../src/properties";
 import {Testers} from "../utilities/testers";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 
 @suite class Asf_StreamPropertiesObjectTests extends ObjectTests<StreamPropertiesObject> {
     protected get fromFileConstructor(): (f: File, p: number) => StreamPropertiesObject {

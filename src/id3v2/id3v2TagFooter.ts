@@ -3,7 +3,8 @@ import SyncData from "./syncData";
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {Id3v2TagHeader, Id3v2TagHeaderFlags} from "./id3v2TagHeader";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * This class provides a representation of an ID3v2 tag footer which can be read from and written

@@ -5,7 +5,7 @@ import MatroskaTagValue from "./matroskaTagValue";
 import {MatroskaTagTarget, MatroskaTagTargetType} from "./matroskaTagTarget";
 import {IPicture} from "../picture";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Class that represents a collection of Matroska "tags". This class implements the {@link Tag}
@@ -29,7 +29,7 @@ export default class MatroskaTagCollection extends Tag {
 
     private static readonly PERFORMER_AUDIO_KEY = "PERFORMER";
     private static readonly PERFORMER_VIDEO_KEY = "ACTOR";
-    private static readonly NUMERIC_GENRE_REGEX = new RegExp(/\((\d+)\)/);
+    private static readonly NUMERIC_GENRE_REGEX = /\((\d+)\)/;
 
     private readonly _albumPartTagLevel: number;
     private readonly _albumTagLevel: number;

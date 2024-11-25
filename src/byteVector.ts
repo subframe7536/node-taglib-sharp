@@ -2,8 +2,8 @@ import IConv from "iconv-lite";
 import * as fs from "fs";
 import {IFileAbstraction} from "./fileAbstraction";
 import {IStream} from "./stream";
-import {NumberUtils} from "./utils";
-import {Guards} from "./guards"
+import * as NumberUtils from "./utils/number";
+import * as Guards from "./utils/guards"
 
 /**
  * @summary Specifies the text encoding used when converting betweenInclusive a string and a
@@ -259,7 +259,7 @@ export class ByteVector {
                 // Ignore falsy values
                 return accum;
             }
-            if (typeof(vector) === "number") {
+            if (typeof vector === "number") {
                 // Add 1 for a single byte
                 return accum + 1;
             }
@@ -277,7 +277,7 @@ export class ByteVector {
                 continue;
             }
 
-            if (typeof(v) === "number") {
+            if (typeof v === "number") {
                 // We were given a single byte
                 Guards.byte(v, "Byte values");
                 result._bytes[currentPosition] = v;
@@ -405,7 +405,7 @@ export class ByteVector {
      */
     public static fromLong(value: bigint | number, isBigEndian: boolean = true): ByteVector {
         let bigIntValue: bigint;
-        if (typeof(value) === "number") {
+        if (typeof value === "number") {
             Guards.safeInt(value, "value");
             bigIntValue = BigInt(value);
         } else {
@@ -573,7 +573,7 @@ export class ByteVector {
      */
     public static fromUlong(value: bigint | number, isBigEndian: boolean = true): ByteVector {
         let bigIntValue: bigint;
-        if (typeof(value) === "number") {
+        if (typeof value === "number") {
             Guards.safeUint(value, "value");
             bigIntValue = BigInt(value);
         } else {

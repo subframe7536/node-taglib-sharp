@@ -1,7 +1,7 @@
 import {ByteVector} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {ILosslessAudioCodec, MediaTypes} from "../properties";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Defines the format of waveform-audio data. Only format information common to all waveform-audio

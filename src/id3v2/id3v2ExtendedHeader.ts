@@ -1,6 +1,6 @@
 import SyncData from "./syncData";
 import {ByteVector} from "../byteVector";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * This class is a filler until support for reading and writing the ID3v2 extended header is

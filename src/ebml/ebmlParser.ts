@@ -4,7 +4,8 @@ import {ByteVector} from "../byteVector";
 import {UnsupportedFormatError} from "../errors";
 import {File} from "../file";
 import {IDisposable} from "../interfaces"
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 export default class EbmlParser implements IDisposable {
 

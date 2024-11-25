@@ -3,7 +3,7 @@ import EndTag from "./endTag";
 import StartTag from "./startTag";
 import {File, ReadStyle} from "../file";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * This class represents a file that can have tags at the beginning and/or end of the file. Some

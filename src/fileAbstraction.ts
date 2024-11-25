@@ -1,5 +1,5 @@
 import {IStream, Stream} from "./stream";
-import {Guards} from "./utils";
+import * as Guards from "./utils/guards";
 
 /**
  * This interface provides abstracted access to a file. It permits access to non-standard file

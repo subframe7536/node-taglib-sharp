@@ -1,7 +1,8 @@
 import {NotSupportedError} from "./errors";
 import {IPicture} from "./picture";
 import {Tag, TagTypes} from "./tag";
-import {Guards, NumberUtils} from "./utils";
+import * as NumberUtils from "./utils/number"
+import * as Guards from "./utils/guards";
 
 /**
  * This class provides a unified way of accessing tag data from multiple tag types.

@@ -1,8 +1,8 @@
-import * as path from "path";
 import {ByteVector} from "./byteVector";
 import {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
 import {ILazy} from "./interfaces";
-import {FileUtils, Guards} from "./utils";
+import * as PathUtils from "./utils/path";
+import * as Guards from "./utils/guards";
 import {SeekOrigin} from "./stream";
 import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 
@@ -254,7 +254,7 @@ export class Picture implements IPicture {
 
         const picture = new Picture();
         picture.data = ByteVector.fromPath(filePath);
-        picture.filename = path.basename(filePath);
+        picture.filename = PathUtils.basename(filePath);
         picture.description = picture.filename;
         picture.mimeType = Picture.getMimeTypeFromFilename(picture.filename);
         picture.type = picture.mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
@@ -437,7 +437,7 @@ export class Picture implements IPicture {
             return mimeType;
         }
 
-        const ext = FileUtils.getExtension(name);
+        const ext = PathUtils.getExtension(name);
         for (let i = 0; i < this.EXTENSION_TO_MIMETYPES.length; i += 2) {
             if (this.EXTENSION_TO_MIMETYPES[i] === ext) {
                 mimeType = this.EXTENSION_TO_MIMETYPES[i + 1];
@@ -534,14 +534,14 @@ export class PictureLazy implements IPicture, ILazy {
 
         const picture = new PictureLazy();
         picture._file = new LocalFileAbstraction(filePath);
-        picture._filename = path.basename(filePath);
+        picture._filename = PathUtils.basename(filePath);
         picture._description = picture._filename;
         picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
         picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
 
         return picture;
     }
-    
+
     /**
      * Constructs a new instance that will be lazily loaded from the filePath provided.
      * @param fileName Path to the file to read
@@ -552,7 +552,7 @@ export class PictureLazy implements IPicture, ILazy {
 
         const picture = new PictureLazy();
         picture._file = new MemoryFileAbstraction(fileName, buffer);
-        picture._filename = path.basename(fileName);
+        picture._filename = PathUtils.basename(fileName);
         picture._description = picture._filename;
         picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
         picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;

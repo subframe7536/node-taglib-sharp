@@ -8,7 +8,7 @@ import {IFileAbstraction} from "../fileAbstraction";
 import {Properties} from "../properties";
 import {Tag, TagTypes} from "../tag";
 import {SeekOrigin} from "../stream";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 export default class AiffFile extends File {
 

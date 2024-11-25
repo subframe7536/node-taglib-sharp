@@ -10,7 +10,7 @@ import Mpeg4BoxType from "./mpeg4BoxType";
 import Mpeg4Utils from "./mpeg4Utils";
 import { ByteVector } from "../byteVector";
 import { File } from "../file";
-import { Guards } from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * This class provides methods for reading important information from an MPEG-4 file.

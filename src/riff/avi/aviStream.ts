@@ -3,7 +3,7 @@ import RiffList from "../riffList";
 import RiffWaveFormatEx from "../riffWaveFormatEx";
 import {CorruptFileError} from "../../errors";
 import {ICodec} from "../../properties";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * IDs for a AVI stream types.

@@ -1,4 +1,4 @@
-import {NumberUtils} from "./utils";
+import * as NumberUtils from "./utils/number";
 
 /**
  * Indicates the types o media represented by a {@link ICodec} or {@link Properties}. These values

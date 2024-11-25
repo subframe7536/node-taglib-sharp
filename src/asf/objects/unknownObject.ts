@@ -2,7 +2,7 @@ import BaseObject from "./baseObject";
 import {ByteVector} from "../../byteVector";
 import {ObjectType} from "../constants";
 import {File} from "../../file";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * This class provides a representation of an ASF object that is unknown to the library, which can

@@ -1,7 +1,7 @@
 import EbmlElement from "../ebml/ebmlElement";
 import EbmlParser from "../ebml/ebmlParser";
 import {MatroskaIds} from "./matroskaIds";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Association between a target type numeric value and a target type string value. Also provides a

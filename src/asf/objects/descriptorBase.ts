@@ -1,7 +1,7 @@
 import UuidWrapper from "../../uuidWrapper";
 import {ByteVector, StringType} from "../../byteVector";
 import {CorruptFileError} from "../../errors";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Indicates the type of data stored in a {@link ContentDescriptor} or {@link MetadataDescriptor} object.
@@ -69,7 +69,7 @@ export abstract class DescriptorBase {
 
         switch (type) {
             case DataType.Word:
-                if (typeof(value) !== "number") {
+                if (typeof value !== "number") {
                     throw new Error("Invalid value type for datatype WORD");
                 }
 
@@ -77,7 +77,7 @@ export abstract class DescriptorBase {
                 this._wordValue = value;
                 break;
             case DataType.DWord:
-                if (typeof(value) !== "number") {
+                if (typeof value !== "number") {
                     throw new Error("Invalid value type for datatype DWORD");
                 }
 
@@ -85,7 +85,7 @@ export abstract class DescriptorBase {
                 this._dWordValue = value;
                 break;
             case DataType.QWord:
-                if (typeof(value) !== "bigint") {
+                if (typeof value !== "bigint") {
                     throw new Error("Invalid value type for datatype QWORD");
                 }
 
@@ -93,14 +93,14 @@ export abstract class DescriptorBase {
                 this._qWordValue = value;
                 break;
             case DataType.Bool:
-                if (typeof(value) !== "boolean") {
+                if (typeof value !== "boolean") {
                     throw new Error("Invalid value type for datatype boolean");
                 }
 
                 this._boolValue = value;
                 break;
             case DataType.Unicode:
-                if (typeof(value) !== "string") {
+                if (typeof value !== "string") {
                     throw new Error("Invalid value type for datatype unicode");
                 }
 

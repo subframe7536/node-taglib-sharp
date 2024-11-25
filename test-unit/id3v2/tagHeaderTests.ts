@@ -6,7 +6,7 @@ import TestConstants from "../testConstants";
 import {ByteVector} from "../../src/byteVector";
 import {Id3v2TagHeader, Id3v2TagHeaderFlags} from "../../src/id3v2/id3v2TagHeader";
 import {Testers} from "../utilities/testers";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 
 const getTestHeader = (majorVersion: number, minorVersion: number, flags: Id3v2TagHeaderFlags): Id3v2TagHeader => {
     const data = ByteVector.concatenate(

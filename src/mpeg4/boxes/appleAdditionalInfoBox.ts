@@ -2,7 +2,8 @@ import FullBox from "./fullBox";
 import Mpeg4BoxHeader from "../mpeg4BoxHeader";
 import {ByteVector, StringType} from "../../byteVector";
 import {File} from "../../file";
-import {Guards, StringUtils} from "../../utils";
+import * as StringUtils from "../../utils/string"
+import * as Guards from "../../utils/guards";
 
 /**
  * This class extends {@link FullBox} to provide an implementation of an Apple AdditionalInfoBox.

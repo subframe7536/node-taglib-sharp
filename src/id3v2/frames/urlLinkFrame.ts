@@ -2,7 +2,7 @@ import {ByteVector, StringType} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifier, FrameIdentifiers} from "../frameIdentifiers";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Provides ID3v2 URL Link frame implementation (section 4.3.1) covering `W000` to `WZZZ`,

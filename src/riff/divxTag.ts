@@ -2,7 +2,7 @@ import Genres from "../genres";
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Represents a DivX tag that behaves similar to an ID3v1 tag.

@@ -2,7 +2,7 @@ import EbmlElement from "../../ebml/ebmlElement";
 import {MatroskaIds} from "../matroskaIds";
 import {IVideoCodec, MediaTypes} from "../../properties";
 import {MatroskaTrackType, Track} from "./track";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Possible modifications to the aspect ratio.

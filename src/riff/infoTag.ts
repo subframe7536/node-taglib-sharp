@@ -1,7 +1,7 @@
 import RiffList from "./riffList";
 import RiffListTag from "./riffListTag";
 import {TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Provides support for reading and writing standard INFO tags.

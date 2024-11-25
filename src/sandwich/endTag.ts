@@ -11,7 +11,7 @@ import {CorruptFileError, UnsupportedFormatError} from "../errors";
 import {File, ReadStyle} from "../file";
 import {Id3v2TagHeaderFlags} from "../id3v2/id3v2TagHeader";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Provides support for accessing and modifying a collection of tags appearing at the end of a

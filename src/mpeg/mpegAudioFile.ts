@@ -6,7 +6,7 @@ import {File, ReadStyle} from "../file";
 import {IFileAbstraction} from "../fileAbstraction";
 import {Properties} from "../properties";
 import {TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * This class extends {@link SandwichFile} to provide tagging and properties support for

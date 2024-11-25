@@ -5,7 +5,8 @@ import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 import {Properties} from "./properties";
 import {IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
-import {FileUtils, Guards} from "./utils";
+import * as PathUtils from "./utils/path";
+import * as Guards from "./utils/guards";
 
 /**
  * Specifies the options to use when reading the media. Can be treated as flags.
@@ -87,7 +88,7 @@ export abstract class File implements IDisposable {
     // #region Member Variables
 
     private static readonly BUFFER_SIZE: number = 1024;
-    private static _fileTypes: {[mimeType: string]: FileTypeConstructor} = {};
+    private static _fileTypes: Map<string, FileTypeConstructor> = new Map();
     private static _fileTypeResolvers: FileTypeResolver[] = [];
 
     // @TODO: Remove protected member variables
@@ -102,7 +103,7 @@ export abstract class File implements IDisposable {
 
     protected constructor(file: IFileAbstraction | string) {
         Guards.truthy(file, "file");
-        this._fileAbstraction = typeof(file) === "string"
+        this._fileAbstraction = typeof file === "string"
             ? <IFileAbstraction> new LocalFileAbstraction(file)
             : file;
     }
@@ -168,7 +169,7 @@ export abstract class File implements IDisposable {
 
         // Step 1) Calculate the MimeType based on the extension of the file if it was not provided
         if (!mimeType) {
-            const ext = FileUtils.getExtension(abstraction.name);
+            const ext = PathUtils.getExtension(abstraction.name);
             mimeType = `taglib/${ext.toLowerCase()}`;
         }
 
@@ -181,7 +182,7 @@ export abstract class File implements IDisposable {
         }
 
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
-        const fileType = File._fileTypes[mimeType];
+        const fileType = File._fileTypes.get(mimeType);
         if (!fileType) {
             throw new Error(`Unsupported format: mimetype for ${abstraction.name} (${mimeType}) is not supported`);
         }
@@ -335,10 +336,10 @@ export abstract class File implements IDisposable {
     public static addFileType(mimeType: string, constructor: FileTypeConstructor, override: boolean = false): void {
         Guards.truthy(mimeType, "mimeType");
         Guards.truthy(constructor, "constructor");
-        if (!override && File._fileTypes[mimeType]) {
+        if (!override && File._fileTypes.has(mimeType)) {
             throw new Error(`Invalid operation: MimeType ${mimeType} already has a file type associated with it`);
         }
-        File._fileTypes[mimeType] = constructor;
+        File._fileTypes.set(mimeType, constructor);
     }
 
     /**
@@ -355,7 +356,7 @@ export abstract class File implements IDisposable {
      * Used for removing a file type constructor during unit testing
      */
     public static removeFileType(mimeType: string): void {
-        delete File._fileTypes[mimeType];
+        File._fileTypes.delete(mimeType);
     }
 
     /**

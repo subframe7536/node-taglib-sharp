@@ -2,7 +2,8 @@ import IOggCodec from "./iOggCodec";
 import XiphComment from "../../xiph/xiphComment";
 import {ByteVector, StringType} from "../../byteVector";
 import {IAudioCodec, MediaTypes} from "../../properties";
-import {Guards, NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number"
+import * as Guards from "../../utils/guards";
 
 /**
  * Represents an Ogg Opus bitstream for use within an Ogg file.

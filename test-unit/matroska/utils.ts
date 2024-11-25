@@ -6,7 +6,7 @@ export default class MatroskaTestUtils {
     public static getTestElement(value: string|boolean|number|bigint|ByteVector, id: number): EbmlElement {
         let bytes: ByteVector;
         // noinspection FallThroughInSwitchStatementJS
-        switch (typeof (value)) {
+        switch (typeof value) {
             case "object":
                 if (value instanceof ByteVector) {
                     bytes = value;

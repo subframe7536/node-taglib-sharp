@@ -2,7 +2,8 @@ import IOggCodec from "./iOggCodec";
 import XiphComment from "../../xiph/xiphComment";
 import {ByteVector, StringType} from "../../byteVector";
 import {IVideoCodec, MediaTypes} from "../../properties";
-import {Guards, NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number"
+import * as Guards from "../../utils/guards";
 
 /**
  * Types of packets that occur within an Ogg Theora bitstream.

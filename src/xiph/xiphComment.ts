@@ -3,7 +3,8 @@ import XiphSettings from "./xiphSettings";
 import {ByteVector, StringType} from "../byteVector";
 import {IPicture, Picture} from "../picture";
 import {Tag, TagTypes} from "../tag";
-import {DateUtils, Guards} from "../utils";
+import * as DateUtils from "../utils/date";
+import * as Guards from "../utils/guards";
 
 /**
  * Provides support for reading and writing Xiph comment-style tags.
@@ -360,7 +361,7 @@ export default class XiphComment extends Tag {
 
     /**
      * @inheritDoc
-     * @remarks Stored in the `TRACKNUMBER` field 
+     * @remarks Stored in the `TRACKNUMBER` field
      */
     public get track(): number {
         const text = this.getFieldFirstValue("TRACKNUMBER");
@@ -419,7 +420,7 @@ export default class XiphComment extends Tag {
 
     /**
      * @inheritDoc
-     * @remarks Stored in the `DISCNUMBER` field 
+     * @remarks Stored in the `DISCNUMBER` field
      */
     public get disc(): number {
         const text = this.getFieldFirstValue("DISCNUMBER");
@@ -432,7 +433,7 @@ export default class XiphComment extends Tag {
     }
     /**
      * @inheritDoc
-     * @remarks Stored in the `DISCNUMBER` field 
+     * @remarks Stored in the `DISCNUMBER` field
      */
     public set disc(value: number) {
         // TODO: Option to store as fractional?

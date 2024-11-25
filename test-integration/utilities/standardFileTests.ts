@@ -14,7 +14,7 @@ import {
     Tag,
     TagTypes
 } from "../../src";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 
 export enum TestTagLevel {
     Normal,

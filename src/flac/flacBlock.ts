@@ -1,7 +1,8 @@
 import {ByteVector} from "../byteVector";
 import {File, FileAccessMode} from "../file";
 import {ILazy} from "../interfaces";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Specifies the contents of a FLAC block.

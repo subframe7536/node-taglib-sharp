@@ -19,7 +19,8 @@ import {RelativeVolumeFrame} from "./relativeVolumeFrame";
 import {SynchronizedLyricsFrame} from "./synchronizedLyricsFrame";
 import {TextInformationFrame, UserTextInformationFrame} from "./textInformationFrame";
 import {UrlLinkFrame, UserUrlLinkFrame} from "./urlLinkFrame";
-import {Guards, NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number"
+import * as Guards from "../../utils/guards";
 
 /**
  * Type shortcut for a method that returns a {@link Frame}.

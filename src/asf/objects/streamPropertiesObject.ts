@@ -8,7 +8,7 @@ import {Guids, ObjectType} from "../constants";
 import {CorruptFileError} from "../../errors";
 import {File} from "../../file";
 import {ICodec} from "../../properties";
-import {NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number";
 
 /**
  * This class provides a representation of an ASF properties object which can be read from and

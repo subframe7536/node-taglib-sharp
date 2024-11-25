@@ -15,7 +15,7 @@ import {MatroskaTagTarget} from "./matroskaTagTarget";
 import {MediaTypes, Properties} from "../properties";
 import {Tag, TagTypes} from "../tag";
 import {Track} from "./tracks/track";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Interface for an EBML header

@@ -2,7 +2,7 @@ import FullBox from "./fullBox";
 import Mpeg4BoxHeader from "../mpeg4BoxHeader";
 import {ByteVector} from "../../byteVector";
 import {File} from "../../file";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * This class extends {@link FullBox} to provide an implementation of a ISO/IEC 14496-12 ChunkLargeOffsetBox.

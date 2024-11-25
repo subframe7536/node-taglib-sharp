@@ -2,7 +2,7 @@ import EbmlElement from "../../ebml/ebmlElement";
 import {MatroskaIds} from "../matroskaIds";
 import {ILosslessAudioCodec, MediaTypes} from "../../properties";
 import {MatroskaTrackType, Track} from "./track";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 export default class AudioTrack extends Track implements ILosslessAudioCodec {
     private readonly _bitDepth: number;

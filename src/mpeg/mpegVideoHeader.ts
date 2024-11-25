@@ -1,7 +1,8 @@
 import {CorruptFileError} from "../errors";
 import {File} from "../file";
 import {IVideoCodec, MediaTypes} from "../properties";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Provides information about an MPEG video stream.

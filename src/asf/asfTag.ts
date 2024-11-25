@@ -8,7 +8,7 @@ import {ContentDescriptor, ExtendedContentDescriptionObject} from "./objects/ext
 import {IPicture, Picture} from "../picture";
 import {MetadataDescriptor, MetadataLibraryObject} from "./objects/metadataLibraryObject";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 import {ObjectType} from "./constants";
 
 /**
@@ -21,7 +21,7 @@ export default class AsfTag extends Tag {
     private _extendedDescriptionObject: ExtendedContentDescriptionObject = ExtendedContentDescriptionObject.fromEmpty();
     private _metadataLibraryObject: MetadataLibraryObject = MetadataLibraryObject.fromEmpty();
 
-    private static readonly GENRE_REGEX = new RegExp(/\((\d+)\)/);
+    private static readonly GENRE_REGEX = /\((\d+)\)/;
 
     // #region Constructors
 

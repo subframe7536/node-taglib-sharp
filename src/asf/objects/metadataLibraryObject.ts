@@ -5,7 +5,7 @@ import {Guids, ObjectType} from "../constants";
 import {DataType, DescriptorBase, DescriptorValue} from "./descriptorBase";
 import {CorruptFileError} from "../../errors";
 import {File} from "../../file";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * This class provides a representation of an ASF description record to be used inside a

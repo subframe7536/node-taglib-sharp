@@ -2,7 +2,7 @@ import CodecFactory from "./codecs/codecFactory";
 import IOggCodec from "./codecs/iOggCodec";
 import OggPage from "./oggPage";
 import {ByteVector} from "../byteVector";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 import {OggPageFlags} from "./oggPageHeader";
 
 /**

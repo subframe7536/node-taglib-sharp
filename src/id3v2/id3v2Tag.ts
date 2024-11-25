@@ -18,7 +18,8 @@ import {IPicture} from "../picture";
 import {Tag, TagTypes} from "../tag";
 import {TextInformationFrame, UserTextInformationFrame} from "./frames/textInformationFrame";
 import {UrlLinkFrame} from "./frames/urlLinkFrame";
-import {DateUtils, Guards} from "../utils";
+import * as DateUtils from "../utils/date";
+import * as Guards from "../utils/guards";
 
 /**
  * Extends {@link Tag} to provide support for reading and writing tags stored in the ID3v2 format.

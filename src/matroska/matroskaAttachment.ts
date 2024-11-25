@@ -6,7 +6,7 @@ import {ByteVector} from "../byteVector";
 import {ILazy} from "../interfaces";
 import {MatroskaIds} from "./matroskaIds";
 import {IPicture, Picture, PictureType} from "../picture";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Class that represents an attachment for a Matroska file

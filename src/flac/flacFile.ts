@@ -2,7 +2,6 @@ import EndTag from "../sandwich/endTag";
 import FlacFileSettings from "./flacFileSettings";
 import FlacStreamHeader from "./flacStreamHeader";
 import FlacTag from "./flacTag";
-import Settings from "../settings";
 import StartTag from "../sandwich/startTag";
 import XiphComment from "../xiph/xiphComment";
 import XiphPicture from "../xiph/xiphPicture";
@@ -14,7 +13,7 @@ import {FlacBlock, FlacBlockType} from "./flacBlock";
 import {Properties} from "../properties";
 import {ISandwichFile} from "../sandwich/sandwichFile";
 import {Tag, TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * This class extends {@link File} to provide tagging and properties for FLAC audio files.
@@ -79,7 +78,7 @@ export default class FlacFile extends File implements ISandwichFile {
             }
 
             // Desired tag does not exist, create it
-            this._tag.createTag(tagType, Settings.copyExistingTagsToNewDefaultTags);
+            this._tag.createTag(tagType, true);
         }
     }
 

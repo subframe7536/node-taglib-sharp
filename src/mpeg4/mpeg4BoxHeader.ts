@@ -1,7 +1,8 @@
 import Mpeg4BoxType from "./mpeg4BoxType";
 import {ByteVector} from "../byteVector";
 import {File} from "../file";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Provides support for reading and writing headers for ISO/IEC 14496-12 boxes.

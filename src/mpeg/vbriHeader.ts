@@ -1,6 +1,6 @@
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Information about a variable bitrate MPEG audio stream encoded by the Fraunhofer encoder

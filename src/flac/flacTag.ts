@@ -6,7 +6,8 @@ import XiphComment from "../xiph/xiphComment";
 import XiphPicture from "../xiph/xiphPicture";
 import {IPicture} from "../picture";
 import {Tag, TagTypes} from "../tag";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Collection of tags that can be stored in a FLAC file.

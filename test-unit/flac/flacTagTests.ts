@@ -11,7 +11,7 @@ import XiphComment from "../../src/xiph/xiphComment";
 import XiphPicture from "../../src/xiph/xiphPicture";
 import {TagTypes} from "../../src/tag";
 import {TagTesters, Testers} from "../utilities/testers";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 
 @suite class Flac_TagTests {
     @test

@@ -2,7 +2,7 @@ import RiffList from "../riffList";
 import {AviStream} from "./aviStream";
 import {CorruptFileError} from "../../errors";
 import {ICodec} from "../../properties";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * This class represents the headers in an AVI file.

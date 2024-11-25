@@ -6,7 +6,7 @@ import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifiers} from "../frameIdentifiers";
 import {IPicture, Picture, PictureLazy, PictureType} from "../../picture";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 export default class AttachmentFrame extends Frame implements IPicture {
     // NOTE: It probably doesn't look necessary to implement IPicture, but it makes converting a

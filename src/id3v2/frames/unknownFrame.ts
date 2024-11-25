@@ -2,7 +2,7 @@ import {ByteVector} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifier} from "../frameIdentifiers";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Fallback type when no other frame class works for a given frame.

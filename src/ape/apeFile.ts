@@ -5,7 +5,7 @@ import {File, ReadStyle} from "../file";
 import {IFileAbstraction} from "../fileAbstraction";
 import {Properties} from "../properties";
 import {TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Provides tagging and properties support for Monkey's Audio APE files.

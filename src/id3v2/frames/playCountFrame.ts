@@ -2,7 +2,7 @@ import {ByteVector} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifiers} from "../frameIdentifiers";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * This class extends {@link Frame} implementing support for ID3v2 play count (PCNT) frames.

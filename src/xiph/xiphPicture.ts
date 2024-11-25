@@ -3,7 +3,7 @@ import {CorruptFileError} from "../errors";
 import {FlacBlock} from "../flac/flacBlock";
 import {ILazy} from "../interfaces";
 import {IPicture, PictureType} from "../picture";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 export default class XiphPicture implements IPicture, ILazy {
     private _rawDataSource: () => ByteVector;

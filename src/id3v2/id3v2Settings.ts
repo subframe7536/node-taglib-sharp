@@ -1,5 +1,5 @@
 import {StringType} from "../byteVector";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * This class contains settings related to ID3v2 tag operations. Open files will need to be

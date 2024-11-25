@@ -21,7 +21,7 @@ import {RelativeVolumeFrame} from "../../src/id3v2/frames/relativeVolumeFrame";
 import {TextInformationFrame, UserTextInformationFrame} from "../../src/id3v2/frames/textInformationFrame";
 import {SynchronizedLyricsFrame} from "../../src/id3v2/frames/synchronizedLyricsFrame";
 import {UrlLinkFrame, UserUrlLinkFrame} from "../../src/id3v2/frames/urlLinkFrame";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 import {SynchronizedTextType, TimestampFormat} from "../../src/id3v2/utilTypes";
 
 @suite class FrameFactoryTests {

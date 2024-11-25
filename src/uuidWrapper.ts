@@ -6,7 +6,7 @@ import {ByteVector} from "./byteVector";
  */
 export default class UuidWrapper {
     private static readonly GUID_REGEX =
-        new RegExp(/([\dA-F]{8})-?([\dA-F]{4})-?([\dA-F]{4})-?([\dA-F]{4})-?([\dA-F]{12})/i);
+        /([\dA-F]{8})-?([\dA-F]{4})-?([\dA-F]{4})-?([\dA-F]{4})-?([\dA-F]{12})/i;
 
     private readonly _bytes: ByteVector;
 
@@ -22,7 +22,7 @@ export default class UuidWrapper {
             source = Uuid.v4();
         }
 
-        if (typeof(source) === "string") {
+        if (typeof source === "string") {
             // Source is a string, validate and parse it into bytes
             const match = UuidWrapper.GUID_REGEX.exec(source);
             if (!match) {
@@ -58,7 +58,7 @@ export default class UuidWrapper {
         // if (!source) {
         //     const newUuid = Uuid.v4();
         //     this._bytes = new Uint8Array(Uuid.parse(newUuid));
-        // } else if (typeof(source) === "string") {
+        // } else if (typeof source === "string") {
         //     this._bytes = new Uint8Array(Uuid.parse(source));
         // } else {
         //     Uuid.stringify(source);

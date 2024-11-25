@@ -1,7 +1,8 @@
 import {ByteVector} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {ILosslessAudioCodec, MediaTypes} from "../properties";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Provides information about a FLAC audio stream.

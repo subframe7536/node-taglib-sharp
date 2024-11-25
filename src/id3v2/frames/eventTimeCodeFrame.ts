@@ -2,7 +2,7 @@ import {ByteVector} from "../../byteVector";
 import {Frame, FrameClassType} from "./frame";
 import {Id3v2FrameFlags, Id3v2FrameHeader} from "./frameHeader";
 import {FrameIdentifiers} from "../frameIdentifiers";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 import {EventType, TimestampFormat} from "../utilTypes";
 
 /**

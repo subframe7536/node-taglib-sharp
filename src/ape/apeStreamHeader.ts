@@ -1,7 +1,7 @@
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {IAudioCodec, ILosslessAudioCodec, MediaTypes} from "../properties";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Indicates the compression level used when encoding a Monkey's Audio APE file

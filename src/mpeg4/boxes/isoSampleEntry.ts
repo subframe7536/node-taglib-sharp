@@ -1,7 +1,7 @@
 import Mpeg4Box from "./mpeg4Box";
 import Mpeg4BoxHeader from "../mpeg4BoxHeader";
 import {File} from "../../file";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 import {ByteVector} from "../../byteVector";
 
 /**

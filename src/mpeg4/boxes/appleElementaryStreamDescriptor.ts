@@ -4,7 +4,7 @@ import {ByteVector, StringType} from "../../byteVector";
 import {DescriptorTag} from "../descriptorTag";
 import {DescriptorTagReader} from "../descriptorTagReader";
 import {File} from "../../file";
-import {NumberUtils} from "../../utils";
+import * as NumberUtils from "../../utils/number";
 
 /**
  * This class extends {@link FullBox} to provide an implementation of an Apple ElementaryStreamDescriptor.

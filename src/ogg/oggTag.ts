@@ -2,7 +2,7 @@ import CombinedTag from "../combinedTag";
 import OggFileSettings from "./oggFileSettings";
 import XiphComment from "../xiph/xiphComment";
 import {Tag, TagTypes} from "../tag";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * This class combines a collection of {@link XiphComment} objects so that tagging properties can

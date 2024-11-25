@@ -2,7 +2,7 @@ import IRiffChunk from "./iRiffChunk";
 import {ByteVector, StringType} from "../byteVector";
 import {File} from "../file";
 import {ILazy} from "../interfaces";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 /**
  * Represents a block of data in a RIFF file. Used primarily for reading and writing files.

@@ -1,5 +1,6 @@
 import { ByteVector } from "../byteVector";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Provides methods to read descriptor tags

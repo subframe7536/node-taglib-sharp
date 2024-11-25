@@ -4,7 +4,7 @@ import {ByteVector} from "../../byteVector";
 import {ObjectType} from "../constants";
 import {UnsupportedFormatError} from "../../errors";
 import {File} from "../../file";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Base object that provides a basic representation of an ASF object that can be written to and

@@ -1,7 +1,7 @@
 import {ByteVector} from "../byteVector";
 import {File} from "../file";
 import {OggPageHeader} from "./oggPageHeader";
-import {Guards} from "../utils";
+import * as Guards from "../utils/guards";
 
 export default class OggPage {
     private readonly _header: OggPageHeader;

@@ -12,7 +12,7 @@ import {File, ReadStyle} from "../../src/file";
 import {Id3v2TagHeaderFlags} from "../../src/id3v2/id3v2TagHeader";
 import {TagTypes} from "../../src/tag";
 import {TagTesters, Testers} from "../utilities/testers";
-import {NumberUtils} from "../../src/utils";
+import * as NumberUtils from "../../src/number";
 
 @suite class Sandwich_EndTagTests {
     @test

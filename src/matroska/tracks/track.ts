@@ -2,7 +2,7 @@ import EbmlElement from "../../ebml/ebmlElement";
 import {ByteVector} from "../../byteVector";
 import {MatroskaIds} from "../matroskaIds";
 import {ICodec, MediaTypes} from "../../properties";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 export enum MatroskaTrackType {
     Video = 1,

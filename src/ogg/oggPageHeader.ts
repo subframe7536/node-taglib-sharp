@@ -1,7 +1,8 @@
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError} from "../errors";
 import {File} from "../file";
-import {Guards, NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number"
+import * as Guards from "../utils/guards";
 
 /**
  * Indicates the special properties of a {@link OggPageHeader}.

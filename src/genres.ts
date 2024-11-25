@@ -224,7 +224,7 @@ export default class Genres {
      *     bounds of the audio genre array or if `index` is not valid.
      */
     public static indexToAudio(index: number|string, allowParenthesis: boolean): string {
-        const safeIndex = typeof(index) === "string"
+        const safeIndex = typeof index === "string"
             ? Genres.stringToByte(index, allowParenthesis)
             : index;
         return Number.isSafeInteger(safeIndex) && safeIndex < Genres.AUDIO_GENRES.length && safeIndex >= 0
@@ -243,7 +243,7 @@ export default class Genres {
      *     bounds of the video genre array or if `index` is not valid.
      */
     public static indexToVideo(index: number|string, allowParenthesis: boolean): string {
-        const safeIndex = typeof(index) === "string"
+        const safeIndex = typeof index === "string"
             ? Genres.stringToByte(index, allowParenthesis)
             : index;
         return Number.isSafeInteger(safeIndex) && safeIndex < Genres.VIDEO_GENRES.length && safeIndex >= 0

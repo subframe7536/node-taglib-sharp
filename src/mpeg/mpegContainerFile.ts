@@ -9,7 +9,7 @@ import {IFileAbstraction} from "../fileAbstraction";
 import {MpegVersion} from "./mpegEnums";
 import {Properties} from "../properties";
 import {TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Indicates the type of marker found in an MPEG file.

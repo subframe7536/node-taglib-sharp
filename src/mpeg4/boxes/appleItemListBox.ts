@@ -5,7 +5,8 @@ import Mpeg4BoxHeader from "../mpeg4BoxHeader";
 import Mpeg4BoxType from "../mpeg4BoxType";
 import {AppleDataBox, AppleDataBoxFlagType} from "./appleDataBox";
 import {ByteVector} from "../../byteVector";
-import {ArrayUtils, Guards} from "../../utils";
+import * as ArrayUtils from '../../utils/array';
+import * as Guards from "../../utils/guards";
 
 /**
  * This class extends {@link Mpeg4Box} to provide an implementation of an Apple ItemListBox.

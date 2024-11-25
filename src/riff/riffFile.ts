@@ -9,7 +9,6 @@ import RiffChunk from "./riffChunk";
 import RiffList from "./riffList";
 import RiffTags from "./riffTags";
 import RiffWaveFormatEx from "./riffWaveFormatEx";
-import Settings from "../settings";
 import WaveFileSettings from "./waveFileSettings";
 import {ByteVector, StringType} from "../byteVector";
 import {CorruptFileError, UnsupportedFormatError} from "../errors";
@@ -17,7 +16,7 @@ import {File, FileAccessMode, ReadStyle} from "../file";
 import {IFileAbstraction} from "../fileAbstraction";
 import {ICodec, Properties} from "../properties";
 import {Tag, TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * This class extends {@link File} to provide tagging and properties support for RIFF files. These
@@ -78,7 +77,7 @@ export default class RiffFile extends File {
             }
 
             // Desired default tag does not exist, create it
-            this._tag.createTag(tagType, Settings.copyExistingTagsToNewDefaultTags);
+            this._tag.createTag(tagType, true);
         }
     }
 

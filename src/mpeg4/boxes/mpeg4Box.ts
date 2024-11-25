@@ -1,7 +1,8 @@
 import Mpeg4BoxHeader from "../mpeg4BoxHeader";
 import {ByteVector} from "../../byteVector";
 import {File} from "../../file";
-import {ArrayUtils, Guards} from "../../utils";
+import * as ArrayUtils from '../../utils/array';
+import * as Guards from "../../utils/guards";
 
 /**
  * This class provides a generic implementation of a ISO/IEC 14496-12 box.

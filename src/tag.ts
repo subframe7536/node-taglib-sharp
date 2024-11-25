@@ -1,5 +1,5 @@
 import {IPicture} from "./picture";
-import {Guards} from "./utils";
+import * as Guards from "./utils/guards";
 
 /**
  * Indicates the tag types used by a file.
@@ -1362,7 +1362,7 @@ export abstract class Tag {
         if (!value) { return true; }
 
         // Handle pure whitespace string scenario
-        if (typeof(value) === "string") {
+        if (typeof value === "string") {
             return value.trim().length === 0;
         }
 

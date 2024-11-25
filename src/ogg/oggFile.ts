@@ -10,7 +10,7 @@ import {IFileAbstraction} from "../fileAbstraction";
 import {OggPageFlags, OggPageHeader} from "./oggPageHeader";
 import {Properties} from "../properties";
 import {Tag, TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Provides tagging and properties support for Ogg files.

@@ -4,7 +4,7 @@ import Theora from "./theora";
 import Vorbis from "./vorbis";
 import {ByteVector} from "../../byteVector";
 import {UnsupportedFormatError} from "../../errors";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 
 /**
  * Type shortcut for a method that can generate a codec object based on the first packet of the

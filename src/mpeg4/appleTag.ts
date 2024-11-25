@@ -8,7 +8,10 @@ import {AppleDataBox, AppleDataBoxFlagType} from "./boxes/appleDataBox";
 import {ByteVector, StringType} from "../byteVector";
 import {IPicture, Picture} from "../picture";
 import {Tag, TagTypes} from "../tag";
-import {ArrayUtils, DateUtils, Guards, NumberUtils} from "../utils";
+import * as DateUtils from "../utils/date";
+import * as NumberUtils from '../utils/number';
+import * as ArrayUtils from '../utils/array';
+import * as Guards from "../utils/guards";
 
 export default class AppleTag extends Tag {
     /**

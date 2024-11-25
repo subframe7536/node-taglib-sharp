@@ -11,7 +11,7 @@ import {Guids, ObjectType} from "../constants";
 import {CorruptFileError} from "../../errors";
 import {File} from "../../file";
 import {ICodec, Properties} from "../../properties";
-import {Guards} from "../../utils";
+import * as Guards from "../../utils/guards";
 import {ExtendedContentDescriptionObject} from "./extendedContentDescriptionObject";
 
 /**

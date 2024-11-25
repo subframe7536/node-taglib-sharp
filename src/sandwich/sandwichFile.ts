@@ -1,12 +1,11 @@
 import EndTag from "./endTag";
 import SandwichTag from "./sandwichTag";
-import Settings from "../settings";
 import StartTag from "./startTag";
 import {File, FileAccessMode, ReadStyle} from "../file";
 import {IFileAbstraction} from "../fileAbstraction";
 import {Properties} from "../properties";
 import {Tag, TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * Interface for a sandwich file.
@@ -80,7 +79,7 @@ export default abstract class SandwichFile extends File implements ISandwichFile
             }
 
             // Tag is expected to exist
-            this._tag.createTag(tagType, Settings.copyExistingTagsToNewDefaultTags);
+            this._tag.createTag(tagType, true);
         }
     }
 

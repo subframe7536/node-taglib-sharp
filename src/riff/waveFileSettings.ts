@@ -1,5 +1,5 @@
 import {TagTypes} from "../tag";
-import {NumberUtils} from "../utils";
+import * as NumberUtils from "../utils/number";
 
 /**
  * This class contains settings related to WAV file operations. Open files will need to be re-read
