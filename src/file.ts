@@ -215,7 +215,7 @@ export async function createFileFromPath(
  */
 export async function createFileFromBuffer(
     fileName: string,
-    buffer: Uint8Array | Buffer | number[],
+    buffer: Uint8Array,
     mimeType?: string,
     propertiesStyle: ReadStyle = ReadStyle.Average
 ): Promise<File> {

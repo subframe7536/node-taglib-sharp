@@ -4,7 +4,6 @@ import {ILazy} from "./interfaces";
 import * as PathUtils from "./utils/path";
 import * as Guards from "./utils/guards";
 import {SeekOrigin} from "./stream";
-import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 
 /**
  * The type of content appearing in an {@link IPicture} instance.
@@ -138,7 +137,7 @@ export async function createPicturefromPath(filePath: string): Promise<Picture> 
  * @param fileName File name to the file to use for the file
  * @param buffer File buffer
  */
-export async function createPicturefromBuffer(fileName: string, buffer: Uint8Array | Buffer | number[]): Promise<Picture> {
+export async function createPicturefromBuffer(fileName: string, buffer: Uint8Array): Promise<Picture> {
     return Picture.fromFileAbstraction(new ((await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction)(fileName, buffer))
 }
 /**
@@ -455,7 +454,7 @@ export async function createLazyPicturefromPath(filePath: string): Promise<Pictu
  * @param fileName Path to the file to read
  * @param buffer Buffer to read
  */
-export async function createLazyPicturefromBuffer(fileName: string, buffer: Buffer): Promise<PictureLazy> {
+export async function createLazyPicturefromBuffer(fileName: string, buffer: Uint8Array): Promise<PictureLazy> {
     return PictureLazy.fromFile(new ((await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction)(fileName, buffer), 0);
 }
 

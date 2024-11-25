@@ -13,7 +13,7 @@ export class MemoryFileAbstraction implements IFileAbstraction {
      */
     public constructor(
         fileName: string,
-        buffer: Uint8Array | Buffer | number[],
+        buffer: Uint8Array | number[],
     ) {
         this._fileName = fileName
         this._buffer = ByteVector.fromByteArray(buffer)
