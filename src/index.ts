@@ -2,8 +2,8 @@
 // Base/Support classes
 export {ByteVector, StringType} from "./byteVector";
 export {CorruptFileError, NotImplementedError} from "./errors";
-export {File, FileAccessMode, FileTypeConstructor, FileTypeResolver, ReadStyle} from "./file";
-export {IDisposable, ILazy} from "./interfaces";
+export {File, FileAccessMode, FileTypeConstructor, FileTypeResolver, ReadStyle, createFileFromBuffer, createFileFromPath} from "./file";
+export type {IDisposable, ILazy} from "./interfaces";
 export {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
 export {MemoryFileAbstraction} from "./memory/memoryFileAbstraction"
 export {IStream, SeekOrigin} from "./stream";
@@ -13,7 +13,7 @@ export {default as UuidWrapper} from "./uuidWrapper";
 // Base Tag Classes
 export {default as CombinedTag} from "./combinedTag";
 export {default as Genres} from "./genres";
-export {IPicture, Picture, PictureLazy, PictureType} from "./picture";
+export {IPicture, Picture, PictureLazy, PictureType, createLazyPicturefromBuffer, createLazyPicturefromPath, createPicturefromBuffer, createPicturefromPath} from "./picture";
 export {ICodec, IAudioCodec, ILosslessAudioCodec, IVideoCodec, IPhotoCodec, MediaTypes, Properties} from "./properties";
 export {Tag, TagTypes} from "./tag";
 

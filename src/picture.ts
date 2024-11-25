@@ -1,5 +1,5 @@
 import {ByteVector} from "./byteVector";
-import {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
+import type {IFileAbstraction} from "./fileAbstraction";
 import {ILazy} from "./interfaces";
 import * as PathUtils from "./utils/path";
 import * as Guards from "./utils/guards";
@@ -443,6 +443,23 @@ export class Picture implements IPicture {
 }
 
 /**
+ * Constructs a new instance that will be lazily loaded from the filePath provided.
+ * @param filePath Path to the file to read
+ */
+export async function createLazyPicturefromPath(filePath: string): Promise<PictureLazy> {
+    return PictureLazy.fromFile(new ((await import('./fileAbstraction')).LocalFileAbstraction)(filePath), 0);
+}
+
+/**
+ * Constructs a new instance that will be lazily loaded from the filePath provided.
+ * @param fileName Path to the file to read
+ * @param buffer Buffer to read
+ */
+export async function createLazyPicturefromBuffer(fileName: string, buffer: Buffer): Promise<PictureLazy> {
+    return PictureLazy.fromFile(new ((await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction)(fileName, buffer), 0);
+}
+
+/**
  * This class implements {@link IPicture} and provides mechanisms for loading pictures from files.
  * Contrary to {@link Picture}, a reference to a file where the picture is located can be given and
  * the picture is lazily loaded from the file, meaning that it will be read from the file only when
@@ -512,41 +529,6 @@ export class PictureLazy implements IPicture, ILazy {
             picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
             picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
         }
-
-        return picture;
-    }
-
-    /**
-     * Constructs a new instance that will be lazily loaded from the filePath provided.
-     * @param filePath Path to the file to read
-     */
-    public static fromPath(filePath: string): PictureLazy {
-        Guards.truthy(filePath, "path");
-
-        const picture = new PictureLazy();
-        picture._file = new LocalFileAbstraction(filePath);
-        picture._filename = PathUtils.basename(filePath);
-        picture._description = picture._filename;
-        picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
-        picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
-
-        return picture;
-    }
-
-    /**
-     * Constructs a new instance that will be lazily loaded from the filePath provided.
-     * @param fileName Path to the file to read
-     * @param buffer Buffer to read
-     */
-    public static fromBuffer(fileName: string, buffer: Buffer): PictureLazy {
-        Guards.truthy(fileName, "path");
-
-        const picture = new PictureLazy();
-        picture._file = new MemoryFileAbstraction(fileName, buffer);
-        picture._filename = PathUtils.basename(fileName);
-        picture._description = picture._filename;
-        picture._mimeType = Picture.getMimeTypeFromFilename(picture._filename);
-        picture._type = picture._mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
 
         return picture;
     }
