@@ -47,8 +47,8 @@ export default class XingHeader extends VbrHeader {
     ): XingHeader | undefined {
         Guards.truthy(file, "file");
         Guards.safeUint(mpegHeaderPosition, "mpegHeaderPosition");
-        Guards.uint(samplesPerFrame, "samplesPerFrame", false);
-        Guards.uint(samplesPerSecond, "samplesPerSecond", false);
+        Guards.uint(samplesPerFrame, "samplesPerFrame");
+        Guards.uint(samplesPerSecond, "samplesPerSecond");
         if (fallbackFileSize) {
             Guards.safeUint(fallbackFileSize, "fallbackFileSize");
         }

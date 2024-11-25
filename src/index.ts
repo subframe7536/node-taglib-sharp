@@ -2,11 +2,14 @@
 // Base/Support classes
 export {ByteVector, StringType} from "./byteVector";
 export {CorruptFileError, NotImplementedError} from "./errors";
-export {File, FileAccessMode, FileTypeConstructor, FileTypeResolver, ReadStyle, createFileFromBuffer, createFileFromPath} from "./file";
+export {File, FileAccessMode, ReadStyle, createFileFromBuffer, createFileFromPath} from "./file";
+export type {FileTypeConstructor, FileTypeResolver} from "./file";
 export type {IDisposable, ILazy} from "./interfaces";
-export {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
+export {LocalFileAbstraction} from "./fileAbstraction";
+export type {IFileAbstraction} from "./fileAbstraction";
 export {MemoryFileAbstraction} from "./memory/memoryFileAbstraction"
-export {IStream, SeekOrigin} from "./stream";
+export {SeekOrigin} from "./stream";
+export type {IStream} from "./stream";
 export {MemoryStream} from "./memory/memoryStream"
 export {default as UuidWrapper} from "./uuidWrapper";
 export {getMimeType, getExtension} from './utils/path'
@@ -15,12 +18,14 @@ export {getMimeType, getExtension} from './utils/path'
 export {default as CombinedTag} from "./combinedTag";
 export {default as Genres} from "./genres";
 export {IPicture, Picture, PictureLazy, PictureType, createLazyPicturefromBuffer, createLazyPicturefromPath, createPicturefromBuffer, createPicturefromPath} from "./picture";
-export {ICodec, IAudioCodec, ILosslessAudioCodec, IVideoCodec, IPhotoCodec, MediaTypes, Properties} from "./properties";
+export type {IPicture} from "./picture";
+export {MediaTypes, Properties} from "./properties";
+export type {ICodec, IAudioCodec, ILosslessAudioCodec, IVideoCodec, IPhotoCodec} from "./properties";
 export {Tag, TagTypes} from "./tag";
 
 // Sandwich tag files
 export {default as EndTag} from "./sandwich/endTag"
-export {default as SandwichFile, ISandwichFile} from "./sandwich/sandwichFile";
+export {default as SandwichFile, type ISandwichFile} from "./sandwich/sandwichFile";
 export {default as SandwichTag} from "./sandwich/sandwichTag";
 export {default as StartTag} from "./sandwich/startTag";
 
@@ -47,7 +52,7 @@ export {default as AsfBaseObject} from "./asf/objects/baseObject";
 export {default as AsfContentDescriptionObject} from "./asf/objects/contentDescriptionObject";
 export {
     DataType as AsfObjectDataType,
-    DescriptorValue as AsfDescriptorValue
+    type DescriptorValue as AsfDescriptorValue
 } from "./asf/objects/descriptorBase";
 export {
     ContentDescriptor as AsfContentDescriptor,
@@ -102,7 +107,7 @@ export {
 } from "./id3v2/frames/frame";
 export {
     default as Id3v2FrameFactory,
-    FrameCreator as Id3v2FrameCreator
+    type FrameCreator as Id3v2FrameCreator
 } from "./id3v2/frames/frameFactory";
 export {Id3v2FrameFlags, Id3v2FrameHeader} from "./id3v2/frames/frameHeader";
 export {default as Id3v2MusicCdIdentifierFrame} from "./id3v2/frames/musicCdIdentifierFrame";
@@ -189,9 +194,9 @@ export {default as OggTag} from "./ogg/oggTag";
 
 export {
     default as OggCodecFactory,
-    CodecProvider as OggCodecProvider
+    type CodecProvider as OggCodecProvider
 } from "./ogg/codecs/codecFactory";
-export {default as IOggCodec} from "./ogg/codecs/iOggCodec";
+export type {default as IOggCodec} from "./ogg/codecs/iOggCodec";
 export {default as OggOpusCodec} from "./ogg/codecs/opus";
 export {default as OggTheoraCodec} from "./ogg/codecs/theora";
 export {default as OggVorbisCodec} from "./ogg/codecs/vorbis";
@@ -205,7 +210,7 @@ export {
 export {default as AviFileSettings} from "./riff/aviFileSettings";
 export {default as DivxTag} from "./riff/divxTag";
 export {default as InfoTag} from "./riff/infoTag";
-export {default as IRiffChunk} from "./riff/iRiffChunk";
+export type {default as IRiffChunk} from "./riff/iRiffChunk";
 export {default as MovieIdTag} from "./riff/movieIdTag";
 export {default as RiffBitmapInfoHeader} from "./riff/riffBitmapInfoHeader";
 export {default as RiffList} from "./riff/riffList";

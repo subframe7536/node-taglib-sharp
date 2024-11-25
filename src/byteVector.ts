@@ -1,6 +1,6 @@
 import iconvLite from "iconv-lite";
-import {IFileAbstraction} from "./fileAbstraction";
-import {IStream} from "./stream";
+import type {IFileAbstraction} from "./fileAbstraction";
+import type {IStream} from "./stream";
 import * as NumberUtils from "./utils/number";
 import * as Guards from "./utils/guards"
 
