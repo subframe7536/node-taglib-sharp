@@ -1,4 +1,4 @@
-const _EXTNAME_RE = /.(\.[^./]+)$/;
+const _EXTNAME_RE = /.\.([^./]+)$/;
 export function getExtension(name: string): string {
   const match = _EXTNAME_RE.exec(name)
   return (match ? match[1] : name.substring(1)).toLowerCase()
