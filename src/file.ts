@@ -51,6 +51,14 @@ export enum FileAccessMode {
     Closed
 }
 
+/**
+ * Manually load FileType according to MIME type.
+ * @param mime MIME type.
+ * @example
+ * import { loadFileType, getMimeType } from 'node-taglib-sharp-extend'
+ * 
+ * await loadFileType(getMimeType(filePath));
+ */
 export async function loadFileType(mime: string) {
     let fileType: new (...args: any) => File
     switch (mime) {
@@ -187,6 +195,10 @@ export async function createFileFromPath(
     mimeType?: string,
     propertiesStyle: ReadStyle = ReadStyle.Average
 ): Promise<File> {
+    if (!mimeType) {
+        mimeType = PathUtils.getMimeType(filePath)
+    }
+    await loadFileType(mimeType)
     return File.createFromAbstraction(new (await import('./fileAbstraction')).LocalFileAbstraction(filePath), mimeType, propertiesStyle);
 }
 
@@ -207,6 +219,10 @@ export async function createFileFromBuffer(
     mimeType?: string,
     propertiesStyle: ReadStyle = ReadStyle.Average
 ): Promise<File> {
+    if (!mimeType) {
+        mimeType = PathUtils.getMimeType(fileName)
+    }
+    await loadFileType(mimeType)
     return File.createFromAbstraction(new (await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
 }
 
@@ -267,6 +283,8 @@ export abstract class File implements IDisposable {
     /**
      * Creates a new instance of a {@link File} subclass for a specified file abstraction, MimeType,
      * and property read style.
+     * 
+     * You **MUST** call `await loadType(mimeType)` before creating.
      * @param abstraction Object to use when reading/writing from the current instance.
      * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
      *     return. If omitted, the MimeType will be guessed based on the file's extension.
@@ -274,17 +292,16 @@ export abstract class File implements IDisposable {
      *     from the new instance. If omitted, {@link ReadStyle.Average} is used.
      * @returns New instance of {@link File} as read from the specified abstraction.
      */
-    public static async createFromAbstraction(
+    public static createFromAbstraction(
         abstraction: IFileAbstraction,
         mimeType?: string,
         propertiesStyle: ReadStyle = ReadStyle.Average
-    ): Promise<File> {
+    ): File {
         Guards.truthy(abstraction, "abstraction");
 
         // Step 1) Calculate the MimeType based on the extension of the file if it was not provided
         if (!mimeType) {
-            const ext = PathUtils.getExtension(abstraction.name);
-            mimeType = `taglib/${ext.toLowerCase()}`;
+            mimeType = PathUtils.getMimeType(abstraction.name)
         }
 
         // Step 2) Use file type resolvers if we have any
@@ -296,10 +313,10 @@ export abstract class File implements IDisposable {
         }
 
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
-        if (!this._fileTypes.has(mimeType)) {
-            await loadFileType(mimeType)
+        const fileType = this._fileTypes.get(mimeType);
+        if (!fileType) {
+            throw new Error(`No FileType, call loadType(mime) first`);
         }
-        const fileType = this._fileTypes.get(mimeType)!;
         return new fileType(abstraction, propertiesStyle);
     }
 

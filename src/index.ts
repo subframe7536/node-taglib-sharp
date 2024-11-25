@@ -9,6 +9,7 @@ export {MemoryFileAbstraction} from "./memory/memoryFileAbstraction"
 export {IStream, SeekOrigin} from "./stream";
 export {MemoryStream} from "./memory/memoryStream"
 export {default as UuidWrapper} from "./uuidWrapper";
+export {getMimeType, getExtension} from './utils/path'
 
 // Base Tag Classes
 export {default as CombinedTag} from "./combinedTag";
