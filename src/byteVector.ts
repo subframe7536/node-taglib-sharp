@@ -1,4 +1,4 @@
-import IConv from "iconv-lite";
+import iconvLite from "iconv-lite";
 import * as fs from "fs";
 import {IFileAbstraction} from "./fileAbstraction";
 import {IStream} from "./stream";
@@ -116,11 +116,11 @@ export class Encoding {
         //    then, I have word it should work w/an 'unsafe' cast. See
         //    https://github.com/ashtuchkin/iconv-lite/issues/293
         // PATCHED
-        return IConv.decode(data, this._encoding);
+        return iconvLite.decode(data, this._encoding);
     }
 
     public encode(text: string): Uint8Array {
-        return IConv.encode(text, this._encoding);
+        return iconvLite.encode(text, this._encoding);
     }
 }
 

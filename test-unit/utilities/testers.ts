@@ -3,7 +3,7 @@ import {IMock} from "typemoq";
 
 import {Tag} from "../../src/tag";
 import {ByteVector, StringType} from "../../src/byteVector";
-import * as NumberUtils from "../../src/number";
+import * as NumberUtils from "../../src/utils/number";
 
 export enum Allow {
     Nothing = 0,
