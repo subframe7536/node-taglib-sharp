@@ -21,7 +21,7 @@ export default class ApeFile extends SandwichFile {
     ]);
 
     /** @inheritDoc */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file, propertiesStyle, ApeFile.DEFAULT_TAG_LOCATION_MAPPING, ApeFileSettings.defaultTagTypes);
     }
 
@@ -41,10 +41,10 @@ export default class ApeFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/ape",
-    "audio/x-ape",
-    "audio/ape",
-    "application/x-ape"
-].forEach((mt) => File.addFileType(mt, ApeFile));
+// // Register the file type
+// [
+//     "taglib/ape",
+//     "audio/x-ape",
+//     "audio/ape",
+//     "application/x-ape"
+// ].forEach((mt) => File.addFileType(mt, ApeFile));

@@ -41,7 +41,7 @@ export default class FlacFile extends File implements ISandwichFile {
      * @param file File abstraction or path to a file to open as a FLAC file
      * @param propertiesStyle How in-depth to read the properties of the file
      */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file);
 
         this.mode = FileAccessMode.Read;
@@ -268,10 +268,10 @@ export default class FlacFile extends File implements ISandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/flac",
-    "audio/x-flac",
-    "audio/flc",
-    "application/x-flac"
-].forEach((mt) => File.addFileType(mt, FlacFile));
+// // Register the file type
+// [
+//     "taglib/flac",
+//     "audio/x-flac",
+//     "audio/flc",
+//     "application/x-flac",
+// ].forEach((mt) => File.addFileType(mt, FlacFile));

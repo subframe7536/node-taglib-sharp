@@ -21,7 +21,7 @@ export default class OggFile extends File {
     private readonly _tag: OggTag;
 
     /** @inheritDoc */
-    public constructor(file: IFileAbstraction | string, readStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, readStyle: ReadStyle) {
         super(file);
 
         this.mode = FileAccessMode.Read;
@@ -203,24 +203,24 @@ export default class OggFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/ogg",
-    "taglib/oga",
-    "taglib/ogv",
-    "taglib/opus",
-    "application/ogg",
-    "application/x-ogg",
-    "audio/vorbis",
-    "audio/x-vorbis",
-    "audio/x-vorbis+ogg",
-    "audio/ogg",
-    "audio/x-ogg",
-    "video/ogg",
-    "video/x-ogm+ogg",
-    "video/x-theora+ogg",
-    "video/x-theora",
-    "audio/opus",
-    "audio/x-opus",
-    "audio/x-opus+ogg"
-].forEach((mt) => File.addFileType(mt, OggFile));
+// // Register the file type
+// [
+//     "taglib/ogg",
+//     "taglib/oga",
+//     "taglib/ogv",
+//     "taglib/opus",
+//     "application/ogg",
+//     "application/x-ogg",
+//     "audio/vorbis",
+//     "audio/x-vorbis",
+//     "audio/x-vorbis+ogg",
+//     "audio/ogg",
+//     "audio/x-ogg",
+//     "video/ogg",
+//     "video/x-ogm+ogg",
+//     "video/x-theora+ogg",
+//     "video/x-theora",
+//     "audio/opus",
+//     "audio/x-opus",
+//     "audio/x-opus+ogg"
+// ].forEach((mt) => File.addFileType(mt, OggFile));

@@ -50,7 +50,7 @@ export default abstract class SandwichFile extends File implements ISandwichFile
      * @protected
      */
     protected constructor(
-        fileToRead: IFileAbstraction | string,
+        fileToRead: IFileAbstraction,
         readStyle: ReadStyle,
         defaultTagMappingTable: Map<TagTypes, () => boolean>,
         defaultTags: TagTypes

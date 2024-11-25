@@ -1,7 +1,6 @@
 import {ByteVector} from "./byteVector";
-import {IFileAbstraction, LocalFileAbstraction} from "./fileAbstraction";
+import type {IFileAbstraction} from "./fileAbstraction";
 import {IDisposable} from "./interfaces";
-import { MemoryFileAbstraction } from "./memory/memoryFileAbstraction";
 import {Properties} from "./properties";
 import {IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
@@ -50,6 +49,165 @@ export enum FileAccessMode {
      * The file is closed for both read and write operations
      */
     Closed
+}
+
+export async function loadFileType(mime: string) {
+    let fileType: new (...args: any) => File
+    switch (mime) {
+        case "taglib/aac":
+        case "audio/aac":
+            fileType = (await import('./aac/aacFile')).default;
+            break;
+        case "taglib/aif":
+        case "taglib/aiff":
+        case "audio/x-aiff":
+        case "audio/aiff":
+        case "sound/aiff":
+        case "application/x-aiff":
+            fileType = (await import('./aiff/aiffFile')).default;
+            break;
+        case "taglib/ape":
+        case "audio/x-ape":
+        case "audio/ape":
+        case "application/x-ape":
+            fileType = (await import('./ape/apeFile')).default
+            break;
+        case "taglib/wma":
+        case "taglib/wmv":
+        case "taglib/asf":
+        case "audio/x-ms-wma":
+        case "audio/x-ms-asf":
+        case "video/x-ms-asf":
+            fileType = (await import('./asf/asfFile')).default
+            break;
+        case "taglib/flac":
+        case "audio/x-flac":
+        case "audio/flc":
+        case "application/x-flac":
+            fileType = (await import('./flac/flacFile')).default
+            break;
+        case "taglib/mk3d":
+        case "taglib/mka":
+        case "taglib/mks":
+        case "taglib/mkv":
+        case "taglib/webm":
+        case "audio/webm":
+        case "audio/x-matroska":
+        case "video/webm":
+        case "video/x-matroska":
+            fileType = (await import('./matroska/matroskaFile')).default
+            break;
+        case "taglib/mp3":
+        case "audio/x-mp3":
+        case "application/x-id3":
+        case "audio/mpeg":
+        case "audio/x-mpeg":
+        case "audio/x-mpeg-3":
+        case "audio/mpeg3":
+        case "audio/mp3":
+        case "taglib/m2a":
+        case "taglib/mp2":
+        case "taglib/mp1":
+        case "audio/x-mp2":
+        case "audio/x-mp1":
+            fileType = (await import('./mpeg/mpegAudioFile')).default
+            break;
+        case "taglib/mpg":
+        case "taglib/mpeg":
+        case "taglib/mpe":
+        case "taglib/mpv2":
+        case "taglib/m2v":
+        case "video/x-mpg":
+        case "video/mpeg":
+            fileType = (await import('./mpeg/mpegContainerFile')).default
+            break;
+        case "taglib/m4a":
+        case "taglib/m4b":
+        case "taglib/m4v":
+        case "taglib/m4p":
+        case "taglib/mp4":
+        case "audio/mp4":
+        case "audio/x-m4a":
+        case "video/mp4":
+        case "video/x-m4v":
+            fileType = (await import('./mpeg4/mpeg4File')).default
+            break;
+        case "taglib/ogg":
+        case "taglib/oga":
+        case "taglib/ogv":
+        case "taglib/opus":
+        case "application/ogg":
+        case "application/x-ogg":
+        case "audio/vorbis":
+        case "audio/x-vorbis":
+        case "audio/x-vorbis+ogg":
+        case "audio/ogg":
+        case "audio/x-ogg":
+        case "video/ogg":
+        case "video/x-ogm+ogg":
+        case "video/x-theora+ogg":
+        case "video/x-theora":
+        case "audio/opus":
+        case "audio/x-opus":
+        case "audio/x-opus+ogg":
+            fileType = (await import('./ogg/oggFile')).default
+            break;
+        case "taglib/avi":
+        case "taglib/wav":
+        case "taglib/divx":
+        case "video/avi":
+        case "video/msvideo":
+        case "video/x-msvideo":
+        case "image/avi":
+        case "application/x-troff-msvideo":
+        case "audio/avi":
+        case "audio/wav":
+        case "audio/wave":
+        case "audio/x-wav":
+            fileType = (await import('./riff/riffFile')).default
+            break;
+        default:
+            throw new Error(`Unsupported format: ${mime} is not supported`);
+    }
+    File.addFileType(mime, fileType)
+}
+
+/**
+ * Creates a new instance of {@link File} subclass for a specified file path, MimeType, and
+ * property read style.
+ * @param filePath Path to the file to read/write.
+ * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
+ *     return. If omitted, the MimeType will be guessed based on the file's extension.
+ * @param propertiesStyle Optional, level of detail to use when reading the media information
+ *     from the new instance. If omitted {@link ReadStyle.Average} is used.
+ * @returns New instance of {@link File} as read from the specified path.
+ */
+export async function createFileFromPath(
+    filePath: string,
+    mimeType?: string,
+    propertiesStyle: ReadStyle = ReadStyle.Average
+): Promise<File> {
+    return File.createFromAbstraction(new (await import('./fileAbstraction')).LocalFileAbstraction(filePath), mimeType, propertiesStyle);
+}
+
+/**
+ * Creates a new instance of {@link File} subclass for a buffer, MimeType, and
+ * property read style.
+ * @param fileName Name to the buffer to read/write.
+ * @param buffer Buffer that to read/write
+ * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
+ *     return. If omitted, the MimeType will be guessed based on the file's extension.
+ * @param propertiesStyle Optional, level of detail to use when reading the media information
+ *     from the new instance. If omitted {@link ReadStyle.Average} is used.
+ * @returns New instance of {@link File} as read from the specified path.
+ */
+export async function createFileFromBuffer(
+    fileName: string,
+    buffer: Uint8Array | Buffer | number[],
+    mimeType?: string,
+    propertiesStyle: ReadStyle = ReadStyle.Average
+): Promise<File> {
+    return File.createFromAbstraction(new (await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
 }
 
 /**
@@ -101,11 +259,9 @@ export abstract class File implements IDisposable {
 
     // #endregion
 
-    protected constructor(file: IFileAbstraction | string) {
+    protected constructor(file: IFileAbstraction) {
         Guards.truthy(file, "file");
-        this._fileAbstraction = typeof file === "string"
-            ? <IFileAbstraction> new LocalFileAbstraction(file)
-            : file;
+        this._fileAbstraction = file;
     }
 
     /**
@@ -118,53 +274,11 @@ export abstract class File implements IDisposable {
      *     from the new instance. If omitted, {@link ReadStyle.Average} is used.
      * @returns New instance of {@link File} as read from the specified abstraction.
      */
-    public static createFromAbstraction(
+    public static async createFromAbstraction(
         abstraction: IFileAbstraction,
         mimeType?: string,
         propertiesStyle: ReadStyle = ReadStyle.Average
-    ): File {
-        return File.createInternal(abstraction, mimeType, propertiesStyle);
-    }
-
-    /**
-     * Creates a new instance of {@link File} subclass for a specified file path, MimeType, and
-     * property read style.
-     * @param filePath Path to the file to read/write.
-     * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
-     *     return. If omitted, the MimeType will be guessed based on the file's extension.
-     * @param propertiesStyle Optional, level of detail to use when reading the media information
-     *     from the new instance. If omitted {@link ReadStyle.Average} is used.
-     * @returns New instance of {@link File} as read from the specified path.
-     */
-    public static createFromPath(
-        filePath: string,
-        mimeType?: string,
-        propertiesStyle: ReadStyle = ReadStyle.Average
-    ): File {
-        return File.createInternal(new LocalFileAbstraction(filePath), mimeType, propertiesStyle);
-    }
-
-    /**
-     * Creates a new instance of {@link File} subclass for a buffer, MimeType, and
-     * property read style.
-     * @param fileName Name to the buffer to read/write.
-     * @param buffer Buffer that to read/write
-     * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
-     *     return. If omitted, the MimeType will be guessed based on the file's extension.
-     * @param propertiesStyle Optional, level of detail to use when reading the media information
-     *     from the new instance. If omitted {@link ReadStyle.Average} is used.
-     * @returns New instance of {@link File} as read from the specified path.
-     */
-    public static createFromBuffer(
-        fileName: string,
-        buffer: Uint8Array | Buffer | number[],
-        mimeType?: string,
-        propertiesStyle: ReadStyle = ReadStyle.Average
-    ): File {
-        return File.createInternal(new MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
-    }
-
-    private static createInternal(abstraction: IFileAbstraction, mimeType: string, propertiesStyle: ReadStyle): File {
+    ): Promise<File> {
         Guards.truthy(abstraction, "abstraction");
 
         // Step 1) Calculate the MimeType based on the extension of the file if it was not provided
@@ -182,10 +296,10 @@ export abstract class File implements IDisposable {
         }
 
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
-        const fileType = File._fileTypes.get(mimeType);
-        if (!fileType) {
-            throw new Error(`Unsupported format: mimetype for ${abstraction.name} (${mimeType}) is not supported`);
+        if (!this._fileTypes.has(mimeType)) {
+            await loadFileType(mimeType)
         }
+        const fileType = this._fileTypes.get(mimeType)!;
         return new fileType(abstraction, propertiesStyle);
     }
 

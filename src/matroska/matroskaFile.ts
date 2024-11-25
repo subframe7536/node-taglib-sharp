@@ -91,7 +91,7 @@ export default class MatroskaFile extends File {
      * @param file File abstraction or path to a file to open as a Matroska/WebM file
      * @param propertiesStyle How in-depth to read the properties of the file
      */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file);
 
         this.mode = FileAccessMode.Read;
@@ -286,15 +286,15 @@ export default class MatroskaFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/mk3d",
-    "taglib/mka",
-    "taglib/mks",
-    "taglib/mkv",
-    "taglib/webm",
-    "audio/webm",
-    "audio/x-matroska",
-    "video/webm",
-    "video/x-matroska"
-].forEach((mt) => File.addFileType(mt, MatroskaFile));
+// // Register the file type
+// [
+//     "taglib/mk3d",
+//     "taglib/mka",
+//     "taglib/mks",
+//     "taglib/mkv",
+//     "taglib/webm",
+//     "audio/webm",
+//     "audio/x-matroska",
+//     "video/webm",
+//     "video/x-matroska"
+// ].forEach((mt) => File.addFileType(mt, MatroskaFile));

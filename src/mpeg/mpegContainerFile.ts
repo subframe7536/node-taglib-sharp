@@ -81,7 +81,7 @@ export default class MpegContainerFile extends SandwichFile {
     private _videoFound = false;
     private _videoHeader: MpegVideoHeader;
 
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(
             file,
             propertiesStyle,
@@ -327,13 +327,13 @@ export default class MpegContainerFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/mpg",
-    "taglib/mpeg",
-    "taglib/mpe",
-    "taglib/mpv2",
-    "taglib/m2v",
-    "video/x-mpg",
-    "video/mpeg"
-].forEach((mt) => File.addFileType(mt, MpegContainerFile));
+// // Register the file type
+// [
+//     "taglib/mpg",
+//     "taglib/mpeg",
+//     "taglib/mpe",
+//     "taglib/mpv2",
+//     "taglib/m2v",
+//     "video/x-mpg",
+//     "video/mpeg"
+// ].forEach((mt) => File.addFileType(mt, MpegContainerFile));

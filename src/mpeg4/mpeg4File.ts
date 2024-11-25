@@ -20,7 +20,7 @@ export default class Mpeg4File extends File {
     private _properties: Properties;
 
     /** @inheritDoc */
-    public constructor(file: IFileAbstraction | string, readStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, readStyle: ReadStyle) {
         super(file);
         this.read(readStyle);
     }
@@ -244,17 +244,17 @@ export default class Mpeg4File extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/m4a",
-    "taglib/m4b",
-    "taglib/m4v",
-    "taglib/m4p",
-    "taglib/mp4",
-    "audio/mp4",
-    "audio/x-m4a",
-    "video/mp4",
-    "video/x-m4v"
-].forEach(
-    (mt) => File.addFileType(mt, Mpeg4File)
-);
+// // Register the file type
+// [
+//     "taglib/m4a",
+//     "taglib/m4b",
+//     "taglib/m4v",
+//     "taglib/m4p",
+//     "taglib/mp4",
+//     "audio/mp4",
+//     "audio/x-m4a",
+//     "video/mp4",
+//     "video/x-m4v"
+// ].forEach(
+//     (mt) => File.addFileType(mt, Mpeg4File)
+// );

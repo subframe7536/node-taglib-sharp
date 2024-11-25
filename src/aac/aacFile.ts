@@ -19,7 +19,7 @@ export default class AacFile extends SandwichFile {
     ]);
 
     /** @inheritDoc */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file, propertiesStyle, AacFile.DEFAULT_TAG_LOCATION_MAPPING, AacFileSettings.defaultTagTypes);
     }
 
@@ -41,8 +41,8 @@ export default class AacFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/aac",
-    "audio/aac"
-].forEach((mt) => File.addFileType(mt, AacFile));
+// // Register the file type
+// [
+//     "taglib/aac",
+//     "audio/aac"
+// ].forEach((mt) => File.addFileType(mt, AacFile));

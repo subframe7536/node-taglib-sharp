@@ -1,5 +1,4 @@
 import iconvLite from "iconv-lite";
-import * as fs from "fs";
 import {IFileAbstraction} from "./fileAbstraction";
 import {IStream} from "./stream";
 import * as NumberUtils from "./utils/number";
@@ -432,19 +431,6 @@ export class ByteVector {
         dv.setUint8(0, value);
 
         return new ByteVector(bytes);
-    }
-
-    /**
-     * Creates a {@link ByteVector} using the contents of a file as the data
-     * @param path Path to the file to store in the ByteVector
-     */
-    public static fromPath(path: string): ByteVector {
-        Guards.truthy(path, "path");
-
-        // NOTE: We are doing this with read file b/c it removes the headache of working with streams
-        // @TODO: Add support for async file reading
-        const fileBuffer = fs.readFileSync(path);
-        return ByteVector.fromByteArray(fileBuffer);
     }
 
     /**

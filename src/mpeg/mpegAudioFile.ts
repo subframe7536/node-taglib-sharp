@@ -21,7 +21,7 @@ export default class MpegAudioFile extends SandwichFile {
 
     private _firstHeader: MpegAudioHeader;
 
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file, propertiesStyle, MpegAudioFile.DEFAULT_TAG_LOCATION_MAPPING, MpegAudioFileSettings.defaultTagTypes);
     }
 
@@ -47,19 +47,19 @@ export default class MpegAudioFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/mp3",
-    "audio/x-mp3",
-    "application/x-id3",
-    "audio/mpeg",
-    "audio/x-mpeg",
-    "audio/x-mpeg-3",
-    "audio/mpeg3",
-    "audio/mp3",
-    "taglib/m2a",
-    "taglib/mp2",
-    "taglib/mp1",
-    "audio/x-mp2",
-    "audio/x-mp1"
-].forEach((mt) => File.addFileType(mt, MpegAudioFile));
+// // Register the file type
+// [
+//     "taglib/mp3",
+//     "audio/x-mp3",
+//     "application/x-id3",
+//     "audio/mpeg",
+//     "audio/x-mpeg",
+//     "audio/x-mpeg-3",
+//     "audio/mpeg3",
+//     "audio/mp3",
+//     "taglib/m2a",
+//     "taglib/mp2",
+//     "taglib/mp1",
+//     "audio/x-mp2",
+//     "audio/x-mp1"
+// ].forEach((mt) => File.addFileType(mt, MpegAudioFile));

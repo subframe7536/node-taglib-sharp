@@ -13,7 +13,7 @@ export default class AsfFile extends File {
     private readonly _asfTag: AsfTag;
     private readonly _properties: Properties;
 
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file);
 
         this.mode = FileAccessMode.Read;
@@ -88,12 +88,12 @@ export default class AsfFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/wma",
-    "taglib/wmv",
-    "taglib/asf",
-    "audio/x-ms-wma",
-    "audio/x-ms-asf",
-    "video/x-ms-asf"
-].forEach((mt) => File.addFileType(mt, AsfFile));
+// // Register the file type
+// [
+//     "taglib/wma",
+//     "taglib/wmv",
+//     "taglib/asf",
+//     "audio/x-ms-wma",
+//     "audio/x-ms-asf",
+//     "video/x-ms-asf"
+// ].forEach((mt) => File.addFileType(mt, AsfFile));

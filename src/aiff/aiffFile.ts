@@ -53,7 +53,7 @@ export default class AiffFile extends File {
      * @param propertiesStyle Level of accuracy to read the media properties, or
      *     {@link ReadStyle.None} to ignore the properties
      */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file);
 
         // Read the file
@@ -247,12 +247,12 @@ export default class AiffFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/aif",
-    "taglib/aiff",
-    "audio/x-aiff",
-    "audio/aiff",
-    "sound/aiff",
-    "application/x-aiff"
-].forEach((mt) => File.addFileType(mt, AiffFile));
+// // Register the file type
+// [
+//     "taglib/aif",
+//     "taglib/aiff",
+//     "audio/x-aiff",
+//     "audio/aiff",
+//     "sound/aiff",
+//     "application/x-aiff"
+// ].forEach((mt) => File.addFileType(mt, AiffFile));

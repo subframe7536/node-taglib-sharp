@@ -122,6 +122,26 @@ export enum PictureType {
 }
 
 /**
+ * Constructs and initializes a new instance from a file located at the provided path. The type
+ * and description of the picture are determined by the extension of the file. The file is
+ * loaded completely.
+ * @param filePath Path to the file to use for the file
+ */
+export async function createPicturefromPath(filePath: string): Promise<Picture> {
+    return Picture.fromFileAbstraction(new ((await import('./fileAbstraction')).LocalFileAbstraction)(filePath))
+}
+
+/**
+ * Constructs and initializes a new instance from a buffer. The type
+ * and description of the picture are determined by the extension of the file. The file is
+ * loaded completely.
+ * @param fileName File name to the file to use for the file
+ * @param buffer File buffer
+ */
+export async function createPicturefromBuffer(fileName: string, buffer: Uint8Array | Buffer | number[]): Promise<Picture> {
+    return Picture.fromFileAbstraction(new ((await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction)(fileName, buffer))
+}
+/**
  * Interface that provides generic information about a picture, including its contents, as used by
  * various formats.
  */
@@ -130,22 +150,22 @@ export interface IPicture {
      * Gets and sets the mime-type of the picture data stored in the current instance.
      */
     mimeType: string;
-
+    
     /**
      * Gets and sets the type of the content visible in the picture stored in the current instance.
      */
     type: PictureType;
-
+   
     /**
      * Gets and sets a filename of the picture stored in the current instance. Optional.
      */
     filename: string;
-
+  
     /**
      * Gets and sets a description of the picture stored in the current instance. Optional.
      */
     description: string;
-
+ 
     /**
      * Gets and sets the picture data stored in the current instance.
      */
@@ -154,7 +174,7 @@ export interface IPicture {
 
 /**
  * This class implements {@link IPicture} and provides a mechanism for loading pictures from files.
- */
+*/
 export class Picture implements IPicture {
     // #region Constants
 
@@ -243,35 +263,6 @@ export class Picture implements IPicture {
 
     private constructor() { /* private to enforce construction via static methods */ }
 
-    /**
-     * Constructs and initializes a new instance from a file located at the provided path. The type
-     * and description of the picture are determined by the extension of the file. The file is
-     * loaded completely.
-     * @param filePath Path to the file to use for the file
-     */
-    public static fromPath(filePath: string): Picture {
-        Guards.truthy(filePath, "filePath");
-
-        const picture = new Picture();
-        picture.data = ByteVector.fromPath(filePath);
-        picture.filename = PathUtils.basename(filePath);
-        picture.description = picture.filename;
-        picture.mimeType = Picture.getMimeTypeFromFilename(picture.filename);
-        picture.type = picture.mimeType.startsWith("image/") ? PictureType.FrontCover : PictureType.NotAPicture;
-        return picture;
-
-    }
-
-    /**
-     * Constructs and initializes a new instance from a buffer. The type
-     * and description of the picture are determined by the extension of the file. The file is
-     * loaded completely.
-     * @param fileName File name to the file to use for the file
-     * @param buffer File buffer
-     */
-    public static fromBuffer(fileName: string, buffer: Uint8Array | Buffer | number[]): Picture {
-        return Picture.fromFileAbstraction(new MemoryFileAbstraction(fileName, buffer))
-    }
 
     /**
      * Constructs and initializes a new instance from the data provided. The data is processed to

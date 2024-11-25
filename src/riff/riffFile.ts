@@ -43,7 +43,7 @@ export default class RiffFile extends File {
      * @param file File abstraction or path to a file to open as a RIFF file
      * @param propertiesStyle How in-depth to read the properties of the file
      */
-    public constructor(file: IFileAbstraction|string, propertiesStyle: ReadStyle) {
+    public constructor(file: IFileAbstraction, propertiesStyle: ReadStyle) {
         super(file);
 
         // Read the file
@@ -436,18 +436,18 @@ export default class RiffFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// Register the file type
-[
-    "taglib/avi",
-    "taglib/wav",
-    "taglib/divx",
-    "video/avi",
-    "video/msvideo",
-    "video/x-msvideo",
-    "image/avi",
-    "application/x-troff-msvideo",
-    "audio/avi",
-    "audio/wav",
-    "audio/wave",
-    "audio/x-wav"
-].forEach((mt) => File.addFileType(mt, RiffFile));
+// // Register the file type
+// [
+//     "taglib/avi",
+//     "taglib/wav",
+//     "taglib/divx",
+//     "video/avi",
+//     "video/msvideo",
+//     "video/x-msvideo",
+//     "image/avi",
+//     "application/x-troff-msvideo",
+//     "audio/avi",
+//     "audio/wav",
+//     "audio/wave",
+//     "audio/x-wav"
+// ].forEach((mt) => File.addFileType(mt, RiffFile));
