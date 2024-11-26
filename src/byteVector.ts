@@ -1,4 +1,4 @@
-import {encode, decode} from "iconv-lite";
+import {encode, decode} from "@subframe7536/iconv-lite";
 import type {IFileAbstraction} from "./fileAbstraction";
 import type {IStream} from "./stream";
 import * as NumberUtils from "./utils/number";
