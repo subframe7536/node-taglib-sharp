@@ -311,7 +311,9 @@ export class ByteVector {
     public static fromBase64String(str: string): ByteVector {
         Guards.notNullOrUndefined(str, "str");
 
-        const bytes = Buffer.from(str, "base64");
+        const bytes = typeof Buffer !== 'undefined'
+            ? Buffer.from(str, "base64")
+            : Uint8Array.from(atob(str), c => c.charCodeAt(0));
         return new ByteVector(bytes);
     }
 
@@ -332,7 +334,7 @@ export class ByteVector {
             throw new Error("Argument out of range: length must be less than or equal to the length of the byte array");
         }
 
-        if (!(bytes instanceof Uint8Array || bytes instanceof Buffer)) {
+        if (!(bytes instanceof Uint8Array)) {
             bytes = new Uint8Array(bytes);
         }
 
@@ -479,7 +481,7 @@ export class ByteVector {
 
             // Setup the events to read the stream
             readStream.on("readable", () => {
-                const bytes = <Buffer> readStream.read();
+                const bytes = readStream.read() as Buffer;
                 if (bytes) {
                     output.addByteArray(bytes);
                 }
@@ -1084,8 +1086,14 @@ export class ByteVector {
      * Returns the current instance as a base64 encoded string.
      */
     public toBase64String(): string {
-        return Buffer.from(this._bytes.buffer, this._bytes.byteOffset, this._bytes.byteLength)
-            .toString("base64");
+        if (typeof Buffer !== 'undefined') {
+            return Buffer.from(this._bytes.buffer, this._bytes.byteOffset, this._bytes.byteLength)
+                .toString("base64");
+        } else if (typeof TextDecoder !== 'undefined') {
+            return btoa(new TextDecoder('utf-8').decode(this._bytes));
+        } else {
+            return btoa([...this._bytes].map(x => String.fromCharCode(x)).join(''));
+        }
     }
 
     /**
