@@ -1,4 +1,4 @@
-import iconvLite from "iconv-lite";
+import {encode, decode} from "iconv-lite";
 import type {IFileAbstraction} from "./fileAbstraction";
 import type {IStream} from "./stream";
 import * as NumberUtils from "./utils/number";
@@ -115,11 +115,11 @@ export class Encoding {
         //    then, I have word it should work w/an 'unsafe' cast. See
         //    https://github.com/ashtuchkin/iconv-lite/issues/293
         // PATCHED
-        return iconvLite.decode(data, this._encoding);
+        return decode(data, this._encoding);
     }
 
     public encode(text: string): Uint8Array {
-        return iconvLite.encode(text, this._encoding);
+        return encode(text, this._encoding);
     }
 }
 

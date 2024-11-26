@@ -6,6 +6,17 @@ import {IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
 import * as PathUtils from "./utils/path";
 import * as Guards from "./utils/guards";
+import {default as AacFile} from "./aac/aacFile";
+import {default as AiffFile} from "./aiff/aiffFile";
+import {default as ApeFile} from "./ape/apeFile";
+import {default as AsfFile} from "./asf/asfFile";
+import {default as FlacFile} from "./flac/flacFile";
+import {default as MatroskaFile} from "./matroska/matroskaFile";
+import {default as MpegAudioFile} from "./mpeg/mpegAudioFile";
+import {default as MpegContainerFile} from "./mpeg/mpegContainerFile";
+import {default as Mpeg4File} from "./mpeg4/mpeg4File";
+import {default as OggFile} from "./ogg/oggFile";
+import {default as RiffFile} from "./riff/riffFile";
 
 /**
  * Specifies the options to use when reading the media. Can be treated as flags.
@@ -59,12 +70,12 @@ export enum FileAccessMode {
  * 
  * await loadFileType(getMimeType(filePath));
  */
-export async function loadFileType(mime: string) {
+export function loadFileType(mime: string) {
     let fileType: new (...args: any) => File
     switch (mime) {
         case "taglib/aac":
         case "audio/aac":
-            fileType = (await import('./aac/aacFile')).default;
+            fileType = AacFile;
             break;
         case "taglib/aif":
         case "taglib/aiff":
@@ -72,13 +83,13 @@ export async function loadFileType(mime: string) {
         case "audio/aiff":
         case "sound/aiff":
         case "application/x-aiff":
-            fileType = (await import('./aiff/aiffFile')).default;
+            fileType = AiffFile;
             break;
         case "taglib/ape":
         case "audio/x-ape":
         case "audio/ape":
         case "application/x-ape":
-            fileType = (await import('./ape/apeFile')).default
+            fileType = ApeFile;
             break;
         case "taglib/wma":
         case "taglib/wmv":
@@ -86,13 +97,13 @@ export async function loadFileType(mime: string) {
         case "audio/x-ms-wma":
         case "audio/x-ms-asf":
         case "video/x-ms-asf":
-            fileType = (await import('./asf/asfFile')).default
+            fileType = AsfFile;
             break;
         case "taglib/flac":
         case "audio/x-flac":
         case "audio/flc":
         case "application/x-flac":
-            fileType = (await import('./flac/flacFile')).default
+            fileType = FlacFile;
             break;
         case "taglib/mk3d":
         case "taglib/mka":
@@ -103,7 +114,7 @@ export async function loadFileType(mime: string) {
         case "audio/x-matroska":
         case "video/webm":
         case "video/x-matroska":
-            fileType = (await import('./matroska/matroskaFile')).default
+            fileType = MatroskaFile;
             break;
         case "taglib/mp3":
         case "audio/x-mp3":
@@ -118,7 +129,7 @@ export async function loadFileType(mime: string) {
         case "taglib/mp1":
         case "audio/x-mp2":
         case "audio/x-mp1":
-            fileType = (await import('./mpeg/mpegAudioFile')).default
+            fileType = MpegAudioFile;
             break;
         case "taglib/mpg":
         case "taglib/mpeg":
@@ -127,7 +138,7 @@ export async function loadFileType(mime: string) {
         case "taglib/m2v":
         case "video/x-mpg":
         case "video/mpeg":
-            fileType = (await import('./mpeg/mpegContainerFile')).default
+            fileType = MpegContainerFile;
             break;
         case "taglib/m4a":
         case "taglib/m4b":
@@ -138,7 +149,7 @@ export async function loadFileType(mime: string) {
         case "audio/x-m4a":
         case "video/mp4":
         case "video/x-m4v":
-            fileType = (await import('./mpeg4/mpeg4File')).default
+            fileType = Mpeg4File;
             break;
         case "taglib/ogg":
         case "taglib/oga":
@@ -158,7 +169,7 @@ export async function loadFileType(mime: string) {
         case "audio/opus":
         case "audio/x-opus":
         case "audio/x-opus+ogg":
-            fileType = (await import('./ogg/oggFile')).default
+            fileType = OggFile;
             break;
         case "taglib/avi":
         case "taglib/wav":
@@ -172,58 +183,13 @@ export async function loadFileType(mime: string) {
         case "audio/wav":
         case "audio/wave":
         case "audio/x-wav":
-            fileType = (await import('./riff/riffFile')).default
+            fileType = RiffFile;
             break;
         default:
             throw new Error(`Unsupported format: ${mime} is not supported`);
     }
-    File.addFileType(mime, fileType)
-}
-
-/**
- * Creates a new instance of {@link File} subclass for a specified file path, MimeType, and
- * property read style.
- * @param filePath Path to the file to read/write.
- * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
- *     return. If omitted, the MimeType will be guessed based on the file's extension.
- * @param propertiesStyle Optional, level of detail to use when reading the media information
- *     from the new instance. If omitted {@link ReadStyle.Average} is used.
- * @returns New instance of {@link File} as read from the specified path.
- */
-export async function createFileFromPath(
-    filePath: string,
-    mimeType?: string,
-    propertiesStyle: ReadStyle = ReadStyle.Average
-): Promise<File> {
-    if (!mimeType) {
-        mimeType = PathUtils.getMimeType(filePath)
-    }
-    await loadFileType(mimeType)
-    return File.createFromAbstraction(new (await import('./fileAbstraction')).LocalFileAbstraction(filePath), mimeType, propertiesStyle);
-}
-
-/**
- * Creates a new instance of {@link File} subclass for a buffer, MimeType, and
- * property read style.
- * @param fileName Name to the buffer to read/write.
- * @param buffer Buffer that to read/write
- * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
- *     return. If omitted, the MimeType will be guessed based on the file's extension.
- * @param propertiesStyle Optional, level of detail to use when reading the media information
- *     from the new instance. If omitted {@link ReadStyle.Average} is used.
- * @returns New instance of {@link File} as read from the specified path.
- */
-export async function createFileFromBuffer(
-    fileName: string,
-    buffer: Uint8Array,
-    mimeType?: string,
-    propertiesStyle: ReadStyle = ReadStyle.Average
-): Promise<File> {
-    if (!mimeType) {
-        mimeType = PathUtils.getMimeType(fileName)
-    }
-    await loadFileType(mimeType)
-    return File.createFromAbstraction(new (await import('./memory/memoryFileAbstraction')).MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
+    File.addFileType(mime, fileType);
+    return fileType;
 }
 
 /**
@@ -313,9 +279,9 @@ export abstract class File implements IDisposable {
         }
 
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
-        const fileType = this._fileTypes.get(mimeType);
+        let fileType = this._fileTypes.get(mimeType);
         if (!fileType) {
-            throw new Error(`No FileType, call loadType(mime) first`);
+            fileType = loadType(mimeType);
         }
         return new fileType(abstraction, propertiesStyle);
     }

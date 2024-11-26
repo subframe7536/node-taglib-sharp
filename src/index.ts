@@ -4,13 +4,14 @@ export {ByteVector, StringType} from "./byteVector";
 export {CorruptFileError, NotImplementedError} from "./errors";
 export {File, FileAccessMode, ReadStyle, createFileFromBuffer, createFileFromPath} from "./file";
 export type {FileTypeConstructor, FileTypeResolver} from "./file";
+export {createFileFromPath, LocalFileAbstraction} from "./abstraction/local/localFileAbstraction";
+export {LocalStream} from "./abstraction/local/localStream";
+export {createFileFromBuffer, MemoryFileAbstraction} from "./abstraction/memory/memoryFileAbstraction";
+export {MemoryStream} from "./abstraction/memory/memoryStream";
 export type {IDisposable, ILazy} from "./interfaces";
-export {LocalFileAbstraction} from "./fileAbstraction";
-export type {IFileAbstraction} from "./fileAbstraction";
-export {MemoryFileAbstraction} from "./memory/memoryFileAbstraction"
-export {SeekOrigin} from "./stream";
-export type {IStream} from "./stream";
-export {MemoryStream} from "./memory/memoryStream"
+export type {IFileAbstraction} from "./abstraction/fileAbstraction";
+export {SeekOrigin} from "./abstraction/stream";
+export type {IStream} from "./abstraction/stream";
 export {default as UuidWrapper} from "./uuidWrapper";
 export {getMimeType, getExtension} from './utils/path'
 
