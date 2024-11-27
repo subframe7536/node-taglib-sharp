@@ -465,7 +465,7 @@ export default abstract class CombinedTag extends Tag {
         }
     }
 
-    private isDefaultValue<T>(value: T, defaultValue: T) {
+    private isDefaultValue<T>(value: T, defaultValue: T): boolean {
         if (Number.isNaN(defaultValue) && Number.isNaN(value)) {
             return true;
         }

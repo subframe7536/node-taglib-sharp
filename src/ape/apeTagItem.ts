@@ -124,7 +124,7 @@ export class ApeTagItem {
     // #region Properties
 
     /**
-     * Gets whether or not the current instance is empty.
+     * Gets whether the current instance is empty.
      */
     public get isEmpty(): boolean {
         if (this._type === ApeTagItemType.Binary) {
@@ -135,7 +135,7 @@ export class ApeTagItem {
     }
 
     /**
-     * Gets whether or not the current instance is flagged as read-only on disk.
+     * Gets whether the current instance is flagged as read-only on disk.
      */
     public get isReadOnly(): boolean { return this._isReadonly; }
 
