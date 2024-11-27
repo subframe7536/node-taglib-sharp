@@ -247,12 +247,12 @@ export default class AiffFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/aif",
-//     "taglib/aiff",
-//     "audio/x-aiff",
-//     "audio/aiff",
-//     "sound/aiff",
-//     "application/x-aiff"
-// ].forEach((mt) => File.addFileType(mt, AiffFile));
+// Register the file type
+[
+    "taglib/aif",
+    "taglib/aiff",
+    "audio/x-aiff",
+    "audio/aiff",
+    "sound/aiff",
+    "application/x-aiff"
+].forEach((mt) => File.addFileType(mt, AiffFile));

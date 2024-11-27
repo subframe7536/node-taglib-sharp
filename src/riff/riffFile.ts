@@ -436,18 +436,18 @@ export default class RiffFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/avi",
-//     "taglib/wav",
-//     "taglib/divx",
-//     "video/avi",
-//     "video/msvideo",
-//     "video/x-msvideo",
-//     "image/avi",
-//     "application/x-troff-msvideo",
-//     "audio/avi",
-//     "audio/wav",
-//     "audio/wave",
-//     "audio/x-wav"
-// ].forEach((mt) => File.addFileType(mt, RiffFile));
+// Register the file type
+[
+    "taglib/avi",
+    "taglib/wav",
+    "taglib/divx",
+    "video/avi",
+    "video/msvideo",
+    "video/x-msvideo",
+    "image/avi",
+    "application/x-troff-msvideo",
+    "audio/avi",
+    "audio/wav",
+    "audio/wave",
+    "audio/x-wav"
+].forEach((mt) => File.addFileType(mt, RiffFile));

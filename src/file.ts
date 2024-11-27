@@ -6,17 +6,6 @@ import {type IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
 import * as PathUtils from "./utils/path";
 import * as Guards from "./utils/guards";
-import {default as AacFile} from "./aac/aacFile";
-import {default as AiffFile} from "./aiff/aiffFile";
-import {default as ApeFile} from "./ape/apeFile";
-import {default as AsfFile} from "./asf/asfFile";
-import {default as FlacFile} from "./flac/flacFile";
-import {default as MatroskaFile} from "./matroska/matroskaFile";
-import {default as MpegAudioFile} from "./mpeg/mpegAudioFile";
-import {default as MpegContainerFile} from "./mpeg/mpegContainerFile";
-import {default as Mpeg4File} from "./mpeg4/mpeg4File";
-import {default as OggFile} from "./ogg/oggFile";
-import {default as RiffFile} from "./riff/riffFile";
 
 /**
  * Specifies the options to use when reading the media. Can be treated as flags.
@@ -60,136 +49,6 @@ export enum FileAccessMode {
      * The file is closed for both read and write operations
      */
     Closed
-}
-
-/**
- * Manually load FileType according to MIME type.
- * @param mime MIME type.
- * @example
- * import { loadFileType, getMimeType } from 'node-taglib-sharp-extend'
- *
- * await loadFileType(getMimeType(filePath));
- */
-export function loadFileType(mime: string) {
-    let fileType: new (...args: any) => File
-    switch (mime) {
-        case "taglib/aac":
-        case "audio/aac":
-            fileType = AacFile;
-            break;
-        case "taglib/aif":
-        case "taglib/aiff":
-        case "audio/x-aiff":
-        case "audio/aiff":
-        case "sound/aiff":
-        case "application/x-aiff":
-            fileType = AiffFile;
-            break;
-        case "taglib/ape":
-        case "audio/x-ape":
-        case "audio/ape":
-        case "application/x-ape":
-            fileType = ApeFile;
-            break;
-        case "taglib/wma":
-        case "taglib/wmv":
-        case "taglib/asf":
-        case "audio/x-ms-wma":
-        case "audio/x-ms-asf":
-        case "video/x-ms-asf":
-            fileType = AsfFile;
-            break;
-        case "taglib/flac":
-        case "audio/x-flac":
-        case "audio/flc":
-        case "application/x-flac":
-            fileType = FlacFile;
-            break;
-        case "taglib/mk3d":
-        case "taglib/mka":
-        case "taglib/mks":
-        case "taglib/mkv":
-        case "taglib/webm":
-        case "audio/webm":
-        case "audio/x-matroska":
-        case "video/webm":
-        case "video/x-matroska":
-            fileType = MatroskaFile;
-            break;
-        case "taglib/mp3":
-        case "audio/x-mp3":
-        case "application/x-id3":
-        case "audio/mpeg":
-        case "audio/x-mpeg":
-        case "audio/x-mpeg-3":
-        case "audio/mpeg3":
-        case "audio/mp3":
-        case "taglib/m2a":
-        case "taglib/mp2":
-        case "taglib/mp1":
-        case "audio/x-mp2":
-        case "audio/x-mp1":
-            fileType = MpegAudioFile;
-            break;
-        case "taglib/mpg":
-        case "taglib/mpeg":
-        case "taglib/mpe":
-        case "taglib/mpv2":
-        case "taglib/m2v":
-        case "video/x-mpg":
-        case "video/mpeg":
-            fileType = MpegContainerFile;
-            break;
-        case "taglib/m4a":
-        case "taglib/m4b":
-        case "taglib/m4v":
-        case "taglib/m4p":
-        case "taglib/mp4":
-        case "audio/mp4":
-        case "audio/x-m4a":
-        case "video/mp4":
-        case "video/x-m4v":
-            fileType = Mpeg4File;
-            break;
-        case "taglib/ogg":
-        case "taglib/oga":
-        case "taglib/ogv":
-        case "taglib/opus":
-        case "application/ogg":
-        case "application/x-ogg":
-        case "audio/vorbis":
-        case "audio/x-vorbis":
-        case "audio/x-vorbis+ogg":
-        case "audio/ogg":
-        case "audio/x-ogg":
-        case "video/ogg":
-        case "video/x-ogm+ogg":
-        case "video/x-theora+ogg":
-        case "video/x-theora":
-        case "audio/opus":
-        case "audio/x-opus":
-        case "audio/x-opus+ogg":
-            fileType = OggFile;
-            break;
-        case "taglib/avi":
-        case "taglib/wav":
-        case "taglib/divx":
-        case "video/avi":
-        case "video/msvideo":
-        case "video/x-msvideo":
-        case "image/avi":
-        case "application/x-troff-msvideo":
-        case "audio/avi":
-        case "audio/wav":
-        case "audio/wave":
-        case "audio/x-wav":
-            fileType = RiffFile;
-            break;
-        default:
-            throw new Error(`Unsupported format: ${mime} is not supported`);
-    }
-    File.addFileType(mime, fileType);
-    return fileType;
 }
 
 /**
@@ -279,9 +138,9 @@ export abstract class File implements IDisposable {
         }
 
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
-        let fileType = this._fileTypes.get(mimeType);
+        const fileType = File._fileTypes.get(mimeType);
         if (!fileType) {
-            fileType = loadFileType(mimeType);
+            throw new Error(`Unsupported format: mimetype for ${abstraction.name} (${mimeType}) is not supported`);
         }
         return new fileType(abstraction, propertiesStyle);
     }

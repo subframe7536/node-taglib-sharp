@@ -286,15 +286,15 @@ export default class MatroskaFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/mk3d",
-//     "taglib/mka",
-//     "taglib/mks",
-//     "taglib/mkv",
-//     "taglib/webm",
-//     "audio/webm",
-//     "audio/x-matroska",
-//     "video/webm",
-//     "video/x-matroska"
-// ].forEach((mt) => File.addFileType(mt, MatroskaFile));
+// Register the file type
+[
+    "taglib/mk3d",
+    "taglib/mka",
+    "taglib/mks",
+    "taglib/mkv",
+    "taglib/webm",
+    "audio/webm",
+    "audio/x-matroska",
+    "video/webm",
+    "video/x-matroska"
+].forEach((mt) => File.addFileType(mt, MatroskaFile));

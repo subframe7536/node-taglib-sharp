@@ -41,8 +41,8 @@ export default class AacFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/aac",
-//     "audio/aac"
-// ].forEach((mt) => File.addFileType(mt, AacFile));
+// Register the file type
+[
+    "taglib/aac",
+    "audio/aac"
+].forEach((mt) => File.addFileType(mt, AacFile));

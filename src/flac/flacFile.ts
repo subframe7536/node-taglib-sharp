@@ -268,10 +268,10 @@ export default class FlacFile extends File implements ISandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/flac",
-//     "audio/x-flac",
-//     "audio/flc",
-//     "application/x-flac",
-// ].forEach((mt) => File.addFileType(mt, FlacFile));
+// Register the file type
+[
+    "taglib/flac",
+    "audio/x-flac",
+    "audio/flc",
+    "application/x-flac",
+].forEach((mt) => File.addFileType(mt, FlacFile));

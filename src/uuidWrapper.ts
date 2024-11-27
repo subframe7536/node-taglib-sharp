@@ -1,4 +1,4 @@
-import * as Uuid from "uuid";
+import {v4} from "uuid";
 import {ByteVector} from "./byteVector";
 
 /**
@@ -19,7 +19,7 @@ export default class UuidWrapper {
         // Temporary implementation - it's probably not perfect
         if (!source) {
             // Source wasn't provided, generate a new guid string
-            source = Uuid.v4();
+            source = v4();
         }
 
         if (typeof source === "string") {

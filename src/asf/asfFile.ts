@@ -88,12 +88,12 @@ export default class AsfFile extends File {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/wma",
-//     "taglib/wmv",
-//     "taglib/asf",
-//     "audio/x-ms-wma",
-//     "audio/x-ms-asf",
-//     "video/x-ms-asf"
-// ].forEach((mt) => File.addFileType(mt, AsfFile));
+// Register the file type
+[
+    "taglib/wma",
+    "taglib/wmv",
+    "taglib/asf",
+    "audio/x-ms-wma",
+    "audio/x-ms-asf",
+    "video/x-ms-asf"
+].forEach((mt) => File.addFileType(mt, AsfFile));

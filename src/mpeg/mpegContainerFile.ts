@@ -327,13 +327,13 @@ export default class MpegContainerFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/mpg",
-//     "taglib/mpeg",
-//     "taglib/mpe",
-//     "taglib/mpv2",
-//     "taglib/m2v",
-//     "video/x-mpg",
-//     "video/mpeg"
-// ].forEach((mt) => File.addFileType(mt, MpegContainerFile));
+// Register the file type
+[
+    "taglib/mpg",
+    "taglib/mpeg",
+    "taglib/mpe",
+    "taglib/mpv2",
+    "taglib/m2v",
+    "video/x-mpg",
+    "video/mpeg"
+].forEach((mt) => File.addFileType(mt, MpegContainerFile));

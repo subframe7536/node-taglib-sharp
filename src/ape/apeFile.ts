@@ -41,10 +41,10 @@ export default class ApeFile extends SandwichFile {
 }
 
 // /////////////////////////////////////////////////////////////////////////
-// // Register the file type
-// [
-//     "taglib/ape",
-//     "audio/x-ape",
-//     "audio/ape",
-//     "application/x-ape"
-// ].forEach((mt) => File.addFileType(mt, ApeFile));
+// Register the file type
+[
+    "taglib/ape",
+    "audio/x-ape",
+    "audio/ape",
+    "application/x-ape"
+].forEach((mt) => File.addFileType(mt, ApeFile));
