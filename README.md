@@ -3,7 +3,8 @@
 
 ## Fork version, optimized for web
 
-Asyncly load file parser. Support read from buffer.
+- Memory support
+- Seperate `Node` deps: No `File.createFromPath`, use `createFileFromPath` function instead
 
 For normal usage, you should use [`node-taglib-sharp-extend`](https://github.com/subframe7536/node-taglib-sharp-extend) instead.
 
