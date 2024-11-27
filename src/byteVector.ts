@@ -3,6 +3,7 @@ import type {IFileAbstraction} from "./fileAbstraction";
 import type {IStream} from "./stream";
 import * as NumberUtils from "./utils/number";
 import * as Guards from "./utils/guards"
+import {Buffer} from "buffer"
 
 /**
  * @summary Specifies the text encoding used when converting betweenInclusive a string and a
@@ -311,9 +312,7 @@ export class ByteVector {
     public static fromBase64String(str: string): ByteVector {
         Guards.notNullOrUndefined(str, "str");
 
-        const bytes = typeof Buffer !== 'undefined'
-            ? Buffer.from(str, "base64")
-            : Uint8Array.from(atob(str), c => c.charCodeAt(0));
+        const bytes = Buffer.from(str, "base64")
         return new ByteVector(bytes);
     }
 
@@ -1086,14 +1085,8 @@ export class ByteVector {
      * Returns the current instance as a base64 encoded string.
      */
     public toBase64String(): string {
-        if (typeof Buffer !== 'undefined') {
-            return Buffer.from(this._bytes.buffer, this._bytes.byteOffset, this._bytes.byteLength)
-                .toString("base64");
-        } else if (typeof TextDecoder !== 'undefined') {
-            return btoa(new TextDecoder('utf-8').decode(this._bytes));
-        } else {
-            return btoa([...this._bytes].map(x => String.fromCharCode(x)).join(''));
-        }
+        return Buffer.from(this._bytes.buffer, this._bytes.byteOffset, this._bytes.byteLength)
+            .toString("base64");
     }
 
     /**
