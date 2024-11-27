@@ -1,5 +1,5 @@
-import { ByteVector } from "../byteVector"
-import { IStream, SeekOrigin } from "../stream"
+import {ByteVector} from "../../byteVector"
+import {IStream, SeekOrigin} from "../../stream"
 
 export class MemoryStream implements IStream {
   private readonly _isWritable: boolean
@@ -12,7 +12,7 @@ export class MemoryStream implements IStream {
     this._position = 0
     this._isWritable = isWritable
   }
-  
+
   /** @inheritDoc */
   public get canWrite(): boolean {
     return this._isWritable

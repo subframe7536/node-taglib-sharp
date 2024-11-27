@@ -1,7 +1,4 @@
-import * as fs from "fs";
-
-import * as Guards from "./utils/guards";
-import {ByteVector} from "./byteVector";
+import type {ByteVector} from "./byteVector";
 
 /**
  * Indicates there the seek operation should begin.

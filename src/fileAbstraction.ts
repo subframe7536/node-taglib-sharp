@@ -1,6 +1,4 @@
-import {IStream, Stream} from "./stream";
-import * as Guards from "./utils/guards";
-
+import type {IStream} from "./stream";
 /**
  * This interface provides abstracted access to a file. It permits access to non-standard file
  * systems and data retrieval methods.

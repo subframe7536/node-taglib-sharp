@@ -1,8 +1,8 @@
 import {ByteVector} from "./byteVector";
 import type {IFileAbstraction} from "./fileAbstraction";
-import {IDisposable} from "./interfaces";
+import type {IDisposable} from "./interfaces";
 import {Properties} from "./properties";
-import {IStream, SeekOrigin} from "./stream";
+import {type IStream, SeekOrigin} from "./stream";
 import {Tag, TagTypes} from "./tag";
 import * as PathUtils from "./utils/path";
 import * as Guards from "./utils/guards";
@@ -67,7 +67,7 @@ export enum FileAccessMode {
  * @param mime MIME type.
  * @example
  * import { loadFileType, getMimeType } from 'node-taglib-sharp-extend'
- * 
+ *
  * await loadFileType(getMimeType(filePath));
  */
 export function loadFileType(mime: string) {
@@ -249,7 +249,7 @@ export abstract class File implements IDisposable {
     /**
      * Creates a new instance of a {@link File} subclass for a specified file abstraction, MimeType,
      * and property read style.
-     * 
+     *
      * You **MUST** call `await loadType(mimeType)` before creating.
      * @param abstraction Object to use when reading/writing from the current instance.
      * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
@@ -281,7 +281,7 @@ export abstract class File implements IDisposable {
         // Step 3) Use the lookup table of MimeTypes => types and attempt to instantiate it
         let fileType = this._fileTypes.get(mimeType);
         if (!fileType) {
-            fileType = loadType(mimeType);
+            fileType = loadFileType(mimeType);
         }
         return new fileType(abstraction, propertiesStyle);
     }

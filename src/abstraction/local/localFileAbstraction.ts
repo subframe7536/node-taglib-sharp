@@ -1,7 +1,7 @@
-import type {IFileAbstraction} from "../fileAbstraction"
-import type {IStream} from "../stream"
+import type {IFileAbstraction} from "../../fileAbstraction"
+import type {IStream} from "../../stream"
 import {LocalStream} from "./localStream"
-import {File} from "../../file"
+import * as Guards from "../../utils/guards"
 
 /**
  * This class implements {@link IFileAbstraction} to provide support for accessing the local/
@@ -49,22 +49,4 @@ export class LocalFileAbstraction implements IFileAbstraction {
         Guards.truthy(stream, "stream");
         stream.close();
     }
-}
-
-/**
- * Creates a new instance of {@link File} subclass for a specified file path, MimeType, and
- * property read style.
- * @param filePath Path to the file to read/write.
- * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
- *     return. If omitted, the MimeType will be guessed based on the file's extension.
- * @param propertiesStyle Optional, level of detail to use when reading the media information
- *     from the new instance. If omitted {@link ReadStyle.Average} is used.
- * @returns New instance of {@link File} as read from the specified path.
- */
-export function createFileFromPath(
-    filePath: string,
-    mimeType?: string,
-    propertiesStyle: ReadStyle = ReadStyle.Average
-): Promise<File> {
-    return File.createFromAbstraction(new LocalFileAbstraction(filePath), mimeType, propertiesStyle);
 }

@@ -1,5 +1,7 @@
-import * as fs from "fs";
-import type {IStream} from "../stream";
+import * as fs from "fs"
+import {SeekOrigin, type IStream} from "../../stream"
+import * as Guards from "../../utils/guards"
+import { ByteVector } from '../../byteVector'
 
 /**
  * Wrapper around the Node.js internal file descriptors to mock behavior like .NET Streams

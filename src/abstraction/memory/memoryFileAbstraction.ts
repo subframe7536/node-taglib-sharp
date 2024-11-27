@@ -1,8 +1,7 @@
-import {ByteVector} from "../byteVector"
-import type {IFileAbstraction} from "../fileAbstraction"
-import type {IStream} from "../stream"
+import {ByteVector} from "../../byteVector"
+import type {IFileAbstraction} from "../../fileAbstraction"
+import type {IStream} from "../../stream"
 import {MemoryStream} from "./memoryStream"
-import {File} from "../../file"
 
 export class MemoryFileAbstraction implements IFileAbstraction {
     private readonly _fileName: string
@@ -52,24 +51,4 @@ export class MemoryFileAbstraction implements IFileAbstraction {
         stream.close()
     }
 
-}
-
-/**
- * Creates a new instance of {@link File} subclass for a buffer, MimeType, and
- * property read style.
- * @param fileName Name to the buffer to read/write.
- * @param buffer Buffer that to read/write
- * @param mimeType Optional, MimeType to use for determining the subclass of {@link File} to
- *     return. If omitted, the MimeType will be guessed based on the file's extension.
- * @param propertiesStyle Optional, level of detail to use when reading the media information
- *     from the new instance. If omitted {@link ReadStyle.Average} is used.
- * @returns New instance of {@link File} as read from the specified path.
- */
-export function createFileFromBuffer(
-    fileName: string,
-    buffer: Uint8Array,
-    mimeType?: string,
-    propertiesStyle: ReadStyle = ReadStyle.Average
-): File {
-    return File.createFromAbstraction(new MemoryFileAbstraction(fileName, buffer), mimeType, propertiesStyle)
 }
