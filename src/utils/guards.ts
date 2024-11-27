@@ -1,5 +1,5 @@
 export const MAX_LONG = BigInt("9223372036854775807")
-// export const MAX_ULONG = BigInt("18446744073709551615")
+export const MAX_ULONG = BigInt("18446744073709551615")
 export const MIN_LONG = BigInt("-9223372036854775808")
 export function all<TElement>(value: TElement[], guard: (val: TElement, name: string) => void, name: string): void {
   for (const element of value) {
@@ -102,7 +102,7 @@ export function ushort(value: number, name: string): void {
   }
 }
 export function ulong(value: bigint, name: string): void {
-  if (value > this.MAX_ULONG || value < 0) {
+  if (value > MAX_ULONG || value < 0) {
     throw new Error(`Argument out of range: ${name} must be a positive, 64-bit integer`);
   }
 }

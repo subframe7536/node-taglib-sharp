@@ -52,15 +52,15 @@ export enum FileAccessMode {
 }
 
 /**
- * Delegate is used for intervening in {@link File.createFromPath} by resolving the filetype before
+ * Delegate is used for intervening in {@link createFileFromPath} by resolving the filetype before
  * any standard resolution operations.
  * @remarks
  *     A FileTypeResolver is one way of altering the behavior of
- *     {@link File.createFromPath} When {@link File.createFromPath} is called, the registered
+ *     {@link createFileFromPath} When {@link createFileFromPath} is called, the registered
  *     resolvers are invoked in reverse order in which they were registered. The resolver may then
  *     perform any operations necessary, including other type-finding methods. If the resolver
- *     returns a new {@link File} it will instantly be returned, by {@link File.createFromPath}. If
- *     it returns `undefined`, {@link File.createFromPath} will continue to process. If the resolver
+ *     returns a new {@link File} it will instantly be returned, by {@link createFileFromPath}. If
+ *     it returns `undefined`, {@link createFileFromPath} will continue to process. If the resolver
  *     throws an exception, it will be uncaught. To register a resolver, use
  *     {@link File.addFileTypeResolver}.
  * @param abstraction File to be read.
@@ -80,7 +80,7 @@ export type FileTypeConstructor = new (abstraction: IFileAbstraction, style: Rea
  *     hand, support the intricacies of different media and tagging formats. For example
  *     {@link Mpeg4File} supports the MPEG-4 specification and Apple's tagging format. Each file
  *     type can be created using its format specific constructors, but the preferred method is to
- *     use {@link File.createFromPath} or {@link File.createFromAbstraction} as it automatically
+ *     use {@link createFileFromPath} or {@link File.createFromAbstraction} as it automatically
  *     detects the appropriate class from the file extension or provided MimeType.
  */
 export abstract class File implements IDisposable {
